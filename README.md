@@ -1,11 +1,21 @@
+<p align="center">
+  <img src="art/banner.jpg" alt="Selli UI for Livewire — Blade & Livewire component library" width="100%">
+</p>
+
 # Selli UI — Blade & Livewire 4 component library
 
 [![run-tests](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/run-tests.yml)
 [![PHPStan](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/phpstan.yml/badge.svg)](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/phpstan.yml)
+[![e2e](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/playwright.yml/badge.svg)](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/playwright.yml)
 
 An enterprise-grade UI component library for Laravel, built on the **Selli Design System** — Electric Violet, Instrument Sans, dark-first, with the brand's signature violet glow. Ships as a set of `x-selli::*` Blade components designed to drop straight into any Laravel + Livewire 4 application.
 
 > Every component is themeable through CSS custom properties (design tokens), works in light and dark mode, and ships with tests.
+
+## 📖 Documentation
+
+Full documentation, with live examples and screenshots of every component:
+**[selli-ui-livewire.selli.io](https://selli-ui-livewire.selli.io)**
 
 ## Requirements
 
@@ -55,7 +65,7 @@ All components are anonymous Blade components under the `selli` namespace:
 <x-selli::badge tone="success" icon="circle-check">Attivo</x-selli::badge>
 ```
 
-See the [documentation](https://github.com/Sellinnate/selli-ui-library-livewire) for the full component reference.
+See the [documentation](https://selli-ui-livewire.selli.io) for the full component reference.
 
 ## Testing
 

@@ -1,7 +1,11 @@
 ---
 title: "Selli UI — Blade & Livewire 4 component library"
 description: "An enterprise UI component library for Laravel, built on the Selli Design System: Electric Violet, dark-first, themeable through CSS tokens."
+image: "https://selli-ui-livewire.selli.io/assets/banner.jpg"
+ogImage: "https://selli-ui-livewire.selli.io/assets/banner.jpg"
 ---
+
+![Selli UI for Livewire — Blade & Livewire component library](/assets/banner.jpg)
 
 # Selli UI
 

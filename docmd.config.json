@@ -1,6 +1,6 @@
 {
   "title": "Selli UI",
-  "url": "https://selli-ui.selli.io",
+  "url": "https://selli-ui-livewire.selli.io",
   "src": "docs",
   "out": "site",
   "engine": "js",

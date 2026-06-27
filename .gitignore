@@ -5,6 +5,12 @@ composer.lock
 # Frontend Assets
 /node_modules
 
+# Playwright
+/playwright/dist
+/playwright-report
+/test-results
+/.playwright
+
 # Logs
 npm-debug.log
 yarn-error.log

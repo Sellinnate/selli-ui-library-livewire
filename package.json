@@ -1,0 +1,14 @@
+{
+    "name": "selli-ui",
+    "private": true,
+    "description": "Selli UI — Blade & Livewire 4 component library (browser test harness)",
+    "scripts": {
+        "build:demos": "php playwright/render.php",
+        "test:e2e": "npm run build:demos && playwright test",
+        "pw:install": "playwright install --with-deps chromium"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.49.0",
+        "alpinejs": "^3.14.8"
+    }
+}

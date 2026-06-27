@@ -1,0 +1,17 @@
+/* ============================================================
+   Selli UI — combined stylesheet
+   The single entry point that pulls in every design-system token
+   layer plus the base element styles. Link this directly:
+
+     <link rel="stylesheet" href="{{ \Selli\Ui\Facades\SelliUi::css() }}">
+
+   …or @import it into your own Tailwind / Vite pipeline.
+   ============================================================ */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/effects.css';
+@import './tokens/density.css';
+@import './tokens/base.css';

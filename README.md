@@ -1,69 +1,61 @@
-# :package_description
+# Selli UI — Blade & Livewire 4 component library
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://github.com/spatie/package-skeleton-laravel/actions/workflows/run-tests.yml/badge.svg)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://github.com/spatie/package-skeleton-laravel/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+[![run-tests](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/run-tests.yml)
+[![PHPStan](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/phpstan.yml/badge.svg)](https://github.com/Sellinnate/selli-ui-library-livewire/actions/workflows/phpstan.yml)
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+An enterprise-grade UI component library for Laravel, built on the **Selli Design System** — Electric Violet, Instrument Sans, dark-first, with the brand's signature violet glow. Ships as a set of `x-selli::*` Blade components designed to drop straight into any Laravel + Livewire 4 application.
 
-## Support us
+> Every component is themeable through CSS custom properties (design tokens), works in light and dark mode, and ships with tests.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
+## Requirements
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+- PHP `^8.3`
+- Laravel `^11.0 || ^12.0`
+- Livewire `^4.0` (only required for the interactive components)
 
 ## Installation
 
-You can install the package via composer:
+```bash
+composer require selli/ui
+```
+
+Publish the stylesheet and JavaScript assets:
 
 ```bash
-composer require :vendor_slug/:package_slug
+php artisan vendor:publish --tag=selli-ui-assets
 ```
 
-You can publish and run the migrations with:
+(Optionally) publish the config file:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
+php artisan vendor:publish --tag=selli-ui-config
 ```
 
-You can publish the config file with:
+Add the design-system stylesheet to your layout `<head>`:
 
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
+```blade
+<link rel="stylesheet" href="{{ \Selli\Ui\Facades\SelliUi::css() }}">
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
+The system is **dark-first**. Add the `dark` appearance by leaving `<html>` as-is, or switch to the light surface with `<html class="light">`.
 
 ## Usage
 
-```php
-$:variable = new VendorName\Skeleton();
-echo $:variable->echoPhrase('Hello, VendorName!');
+All components are anonymous Blade components under the `selli` namespace:
+
+```blade
+<x-selli::button variant="primary" icon="rocket">Inizia ora</x-selli::button>
+
+<x-selli::card>
+    <x-selli::card.icon name="sparkles" />
+    <x-selli::card.title>Componenti enterprise</x-selli::card.title>
+    <x-selli::card.body>Pronti per la produzione, testati e documentati.</x-selli::card.body>
+</x-selli::card>
+
+<x-selli::badge tone="success" icon="circle-check">Attivo</x-selli::badge>
 ```
+
+See the [documentation](https://github.com/Sellinnate/selli-ui-library-livewire) for the full component reference.
 
 ## Testing
 
@@ -73,20 +65,7 @@ composer test
 
 ## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
+Please see [CHANGELOG](CHANGELOG.md) for what has changed recently.
 
 ## License
 

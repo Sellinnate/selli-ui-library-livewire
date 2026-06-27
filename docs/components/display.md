@@ -7,6 +7,8 @@ description: "Card, stat, eyebrow, section-heading, avatar, avatar-group, brand,
 
 ## Card
 
+![Card](/assets/components/card.png)
+
 A glass surface with a hairline border. On hover the border turns violet and a
 soft glow blooms. Compose it with the `card.*` sub-components.
 
@@ -56,6 +58,8 @@ The small glass capsule with a live pulse dot that sits above headings.
 
 ## Section heading
 
+![Section heading](/assets/components/section-heading.png)
+
 The eyebrow + title (with optional violet accent word) + lead paragraph block.
 
 ```blade
@@ -78,6 +82,8 @@ The eyebrow + title (with optional violet accent word) + lead paragraph block.
 | `align` | `left` | `left` or `center`. |
 
 ## Avatar & avatar group
+
+![Avatar](/assets/components/avatar.png)
 
 ```blade
 <x-selli::avatar name="Filippo Calabrese" size="lg" status="online" />
@@ -107,6 +113,8 @@ The Selli logomark + wordmark lockup.
 Props: `size` (`sm`/`md`/`lg`), `showText`, `text`.
 
 ## Badge
+
+![Badge](/assets/components/badge.png)
 
 A small status pill.
 

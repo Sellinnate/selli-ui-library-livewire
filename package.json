@@ -4,6 +4,7 @@
     "description": "Selli UI — Blade & Livewire 4 component library (browser test harness)",
     "scripts": {
         "build:demos": "php playwright/render.php",
+        "shots": "npm run build:demos && php -S 127.0.0.1:4178 -t playwright/dist & sleep 1 && BASE_URL=http://127.0.0.1:4178 node playwright/screenshots.mjs; kill %1 2>/dev/null || true",
         "test:e2e": "npm run build:demos && playwright test",
         "pw:install": "playwright install --with-deps chromium",
         "docs:dev": "docmd dev",

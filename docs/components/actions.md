@@ -5,6 +5,8 @@ description: "Button, button-group, dropdown, context-menu, menu, popover, tabs 
 
 # Buttons & actions
 
+![Pulsanti Selli UI](/assets/components/button.png)
+
 ## Button
 
 The primary call to action. Renders a `<button>`, or an `<a>` when you pass
@@ -49,6 +51,8 @@ Joins related buttons. `attached` (default) merges them into one pill; set it to
 | `attached` | `true` | `true` = joined pill, `false` = spaced. |
 
 ## Menu
+
+![Menu a tendina](/assets/components/menu.png)
 
 A styled menu surface and its items — used inside dropdowns and context menus, or
 on its own.
@@ -110,6 +114,8 @@ Like a dropdown, but the panel holds **any** content, not just menu items.
 
 ## Tabs
 
+![Tabs](/assets/components/tabs.png)
+
 Switch between panels without a page reload (Alpine). `tabs` takes the labels;
 each `tab-panel` declares its `index`.
 
@@ -127,6 +133,8 @@ each `tab-panel` declares its `index`.
 | `tab-panel` | `index` | Which tab this panel belongs to. |
 
 ## Accordion
+
+![Accordion](/assets/components/accordion.png)
 
 Collapsible sections built on the native `<details>` element (works even without
 JavaScript).

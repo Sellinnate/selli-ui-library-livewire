@@ -79,6 +79,7 @@ $pages = [
     'verify-email' => 'Verifica email',
     'privacy' => 'Privacy Policy',
     'error-404' => 'Errore 404',
+    'gallery' => 'Gallery',
 ];
 
 foreach ($pages as $view => $title) {

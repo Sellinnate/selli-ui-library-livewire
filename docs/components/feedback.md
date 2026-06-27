@@ -5,7 +5,11 @@ description: "callout, tooltip, spinner, progress, skeleton, dot and kbd."
 
 # Feedback
 
+![Feedback: spinner, dot, kbd, tooltip](/assets/components/feedback.png)
+
 ## Callout
+
+![Callout](/assets/components/callout.png)
 
 A highlighted message box for tips, info, warnings and errors.
 
@@ -51,6 +55,8 @@ Props: `size`, `color`, `label` (screen-reader text).
 
 ## Progress
 
+![Progress bar](/assets/components/progress.png)
+
 A determinate or indeterminate progress bar.
 
 ```blade
@@ -62,6 +68,8 @@ Props: `value` (0–100, or omit for indeterminate), `size` (`sm`/`md`/`lg`),
 `color`, `label`.
 
 ## Skeleton
+
+![Skeleton](/assets/components/skeleton.png)
 
 A shimmering placeholder for content that's still loading.
 

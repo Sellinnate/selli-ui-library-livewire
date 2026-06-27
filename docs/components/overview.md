@@ -5,6 +5,8 @@ description: "A map of every Selli UI component, grouped by purpose, with links 
 
 # Components overview
 
+![Componenti Selli UI](/assets/components/card.png)
+
 Every component is an anonymous Blade component under the `selli` namespace, so you
 use it as `<x-selli::name>`. Sub-components use a dot, e.g. `<x-selli::card.title>`.
 

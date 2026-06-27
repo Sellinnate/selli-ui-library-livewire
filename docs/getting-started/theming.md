@@ -44,6 +44,8 @@ tiny inline script high in your `<head>`:
 
 ## Colour themes
 
+![Sei temi colore](/assets/components/themes.png)
+
 Selli UI ships **six built-in colour themes**: the default **violet** (the Selli
 brand) plus **blue, emerald, amber, rose and cyan**. Switch by setting
 `data-theme` on `<html>` (omit it, or use `violet`, for the default):

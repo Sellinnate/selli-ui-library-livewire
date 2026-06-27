@@ -5,6 +5,8 @@ description: "field, input, textarea, checkbox, radio, switch, checkbox-group, r
 
 # Forms & inputs
 
+![Controlli form Selli UI](/assets/components/form.png)
+
 Every control forwards extra attributes (including `wire:model`, `name`, `value`,
 `id`) to the underlying native element. See **[Using with
 Livewire](/getting-started/livewire)**.

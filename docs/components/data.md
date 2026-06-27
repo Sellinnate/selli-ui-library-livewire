@@ -7,6 +7,8 @@ description: "table, chart, sparkline, donut, calendar and datepicker."
 
 ## Table
 
+![Tabella](/assets/components/table.png)
+
 Render straight from PHP arrays, or compose your own rows in the slot.
 
 ### Data mode
@@ -43,6 +45,10 @@ Render straight from PHP arrays, or compose your own rows in the slot.
 
 ## Chart
 
+![Grafico a barre](/assets/components/chart-bar.png)
+
+![Grafico a linee](/assets/components/chart-line.png)
+
 A pure-SVG bar or line chart (no JavaScript). Pass data as `label => value` or a
 list of `['label'=>, 'value'=>]`.
 
@@ -74,6 +80,8 @@ Props: `data`, `width`, `height`, `area` (fill under the line).
 
 ## Donut
 
+![Donut](/assets/components/donut.png)
+
 A single-value progress ring with a centered percentage.
 
 ```blade
@@ -83,6 +91,8 @@ A single-value progress ring with a centered percentage.
 Props: `value` (0–100), `size`, `thickness`, `label`, `color`.
 
 ## Calendar
+
+![Calendario](/assets/components/calendar.png)
 
 A server-rendered month grid (Italian labels) with today, selected day and event
 dots. No JavaScript — navigation uses links you provide.

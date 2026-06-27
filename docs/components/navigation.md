@@ -21,6 +21,8 @@ A sticky top bar with glass blur. Three slots: `start`, `center`, `end`.
 
 ## Navlist
 
+![Navlist](/assets/components/navlist.png)
+
 A vertical navigation list (the sidebar menu). Use `navlist.label` for section
 titles and `navlist.item` for links.
 
@@ -40,6 +42,8 @@ titles and `navlist.item` for links.
 
 ## Breadcrumbs
 
+![Breadcrumbs](/assets/components/breadcrumbs.png)
+
 ```blade
 <x-selli::breadcrumbs :items="[
     ['label' => 'Home', 'url' => '/'],
@@ -52,6 +56,8 @@ The last item (or any without a `url`) renders as the current page. Pass `items`
 as `['label'=>, 'url'=>]` maps, or omit and slot your own.
 
 ## Pagination
+
+![Pagination](/assets/components/pagination.png)
 
 ```blade
 <x-selli::pagination :current="5" :total="20" url="?page=:page" />

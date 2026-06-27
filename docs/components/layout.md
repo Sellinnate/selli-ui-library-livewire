@@ -59,6 +59,8 @@ Props: `title`, `sub`. Slots: `action`, default (body).
 
 ## Stat card
 
+![Stat card](/assets/components/stat-card.png)
+
 A metric tile with an icon, value, trend delta and optional sparkline.
 
 ```blade
@@ -119,6 +121,8 @@ the six colour themes. Both persist to `localStorage`. See
 to 1 on phones.
 
 ## Guest layout & auth card
+
+![Auth card](/assets/components/auth-card.png)
 
 For login / register / password / verify-email screens. `guest-layout` is a
 full-screen centered wrapper with a soft brand glow; `auth-card` is the form card.

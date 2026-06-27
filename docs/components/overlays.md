@@ -7,6 +7,8 @@ description: "modal, toast-host and popover — floating surfaces that sit above
 
 ## Modal
 
+![Modal](/assets/components/modal.png)
+
 A centered dialog with a blurred backdrop. It's **event-driven**: open it by
 dispatching `selli-open-modal` with the modal's `name`. It also teleports itself to
 `<body>` so it always sits above everything.

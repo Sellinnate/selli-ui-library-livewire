@@ -1,20 +1,23 @@
 {
-    "name": "selli-ui",
-    "private": true,
-    "description": "Selli UI — Blade & Livewire 4 component library (browser test harness)",
-    "scripts": {
-        "build:demos": "php playwright/render.php",
-        "shots": "npm run build:demos && php -S 127.0.0.1:4178 -t playwright/dist & sleep 1 && BASE_URL=http://127.0.0.1:4178 node playwright/screenshots.mjs; kill %1 2>/dev/null || true",
-        "test:e2e": "npm run build:demos && playwright test",
-        "pw:install": "playwright install --with-deps chromium",
-        "docs:dev": "docmd dev",
-        "docs:build": "docmd build"
-    },
-    "dependencies": {
-        "@mgks/docmd": "^0.8.8"
-    },
-    "devDependencies": {
-        "@playwright/test": "^1.49.0",
-        "alpinejs": "^3.14.8"
-    }
+  "name": "selli-ui",
+  "private": true,
+  "description": "Selli UI — Blade & Livewire 4 component library (browser test harness)",
+  "scripts": {
+    "build:demos": "php playwright/render.php",
+    "shots": "npm run build:demos && php -S 127.0.0.1:4178 -t playwright/dist & sleep 1 && BASE_URL=http://127.0.0.1:4178 node playwright/screenshots.mjs; kill %1 2>/dev/null || true",
+    "test:e2e": "npm run build:demos && playwright test",
+    "pw:install": "playwright install --with-deps chromium",
+    "docs:dev": "docmd dev",
+    "docs:build": "docmd build",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "dependencies": {
+    "@mgks/docmd": "^0.8.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "alpinejs": "^3.14.8",
+    "wrangler": "^4.105.0"
+  }
 }

@@ -5,6 +5,8 @@ description: "The Selli icon set: 119 stroke icons drawn with currentColor, and 
 
 # Icons
 
+![Selli icon set](/assets/components/icons.png)
+
 Selli UI ships a set of **119 stroke icons** (extended Lucide geometry): 24×24, 2px
 stroke, round caps and joins, drawn with `currentColor` so they inherit text
 colour. They're defined in the PHP class `Selli\Ui\Icons` and rendered inline as

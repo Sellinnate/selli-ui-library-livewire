@@ -31,6 +31,8 @@ Sub-components: `card.icon` (`name`, `color`), `card.title` (`as`),
 
 ## Stat
 
+![Stat](/assets/components/stat.png)
+
 A big-number stat block (the "98% / 60+ / 100%" homepage grid).
 
 ```blade
@@ -44,6 +46,8 @@ A big-number stat block (the "98% / 60+ / 100%" homepage grid).
 | *(slot)* | Optional supporting text. |
 
 ## Eyebrow
+
+![Eyebrow](/assets/components/eyebrow.png)
 
 The small glass capsule with a live pulse dot that sits above headings.
 
@@ -102,6 +106,8 @@ The eyebrow + title (with optional violet accent word) + lead paragraph block.
 
 ## Brand
 
+![Brand](/assets/components/brand.png)
+
 The Selli logomark + wordmark lockup.
 
 ```blade
@@ -130,6 +136,8 @@ A small status pill.
 | `dashed` | `false` | Dashed border. |
 
 ## Separator
+
+![Separator](/assets/components/separator.png)
 
 A divider — horizontal, vertical, or with a centered label.
 

@@ -233,4 +233,216 @@
             </div>
         </x-selli::auth-card>
     </div>
+
+    <div class="shot" data-shot="brand"><x-selli::brand size="lg" /></div>
+
+    <div class="shot" data-shot="button-group">
+        <x-selli::button-group>
+            <x-selli::button variant="secondary">Giorno</x-selli::button>
+            <x-selli::button variant="secondary">Settimana</x-selli::button>
+            <x-selli::button variant="secondary">Mese</x-selli::button>
+        </x-selli::button-group>
+    </div>
+
+    <div class="shot shot--mid" data-shot="heading">
+        <div class="stack">
+            <x-selli::heading :level="1">Titolo H1</x-selli::heading>
+            <x-selli::heading :level="2" :gradient="true">Titolo gradiente</x-selli::heading>
+            <x-selli::heading :level="3">Sottotitolo H3</x-selli::heading>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="text">
+        <div class="stack">
+            <x-selli::text color="default">Testo predefinito, ben leggibile.</x-selli::text>
+            <x-selli::text color="muted">Testo secondario attenuato.</x-selli::text>
+            <x-selli::text color="brand" weight="600">Testo nel colore del brand.</x-selli::text>
+        </div>
+    </div>
+
+    <div class="shot" data-shot="eyebrow">
+        <div class="row">
+            <x-selli::eyebrow>Novità</x-selli::eyebrow>
+            <x-selli::eyebrow :pulse="false">Statico</x-selli::eyebrow>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="stat">
+        <div class="row" style="gap:18px;">
+            <x-selli::stat value="98%" label="Uptime">Affidabilità garantita.</x-selli::stat>
+            <x-selli::stat value="60+" label="Clienti">In tutta Europa.</x-selli::stat>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="separator">
+        <div class="stack" style="width:300px;">
+            <x-selli::text color="default">Sezione sopra</x-selli::text>
+            <x-selli::separator />
+            <x-selli::separator label="oppure" />
+            <x-selli::text color="default">Sezione sotto</x-selli::text>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="icons">
+        <div class="row" style="gap:18px;color:var(--foreground);">
+            @foreach (['rocket','sparkles','search','bell','settings','user','users','heart','star','shield-check','calendar','mail','download','trash-2','bar-chart-3','folder','lock','sun','moon','zap'] as $ic)
+                <x-selli::icon :name="$ic" :size="24" />
+            @endforeach
+        </div>
+    </div>
+
+    <div class="shot" data-shot="sparkline">
+        <div style="color:var(--foreground);"><x-selli::sparkline :data="[3,7,4,9,6,11,8,13]" :width="240" :height="56" /></div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="input">
+        <div class="stack">
+            <x-selli::field label="Cerca"><x-selli::input icon="search" placeholder="Cerca un cliente…" /></x-selli::field>
+            <x-selli::field label="Email" error="Indirizzo non valido"><x-selli::input type="email" icon="mail" value="non-valido" :invalid="true" /></x-selli::field>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="textarea">
+        <x-selli::field label="Note"><x-selli::textarea rows="4">Testo su più righe, con altezza ridimensionabile…</x-selli::textarea></x-selli::field>
+    </div>
+
+    <div class="shot shot--mid" data-shot="select">
+        <x-selli::field label="Piano">
+            <x-selli::select :options="['free' => 'Free', 'pro' => 'Pro', 'ent' => 'Enterprise']" :selected="'pro'" />
+        </x-selli::field>
+    </div>
+
+    <div class="shot shot--mid" data-shot="choice">
+        <div class="stack">
+            <x-selli::switch label="Notifiche email" />
+            <x-selli::checkbox label="Accetto i termini" description="Leggi prima il contratto." />
+            <x-selli::radio name="g-r" label="Opzione selezionata" checked />
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="radio-group">
+        <x-selli::radio-group label="Piano" :horizontal="true">
+            <x-selli::radio name="g-rg" value="free" label="Free" />
+            <x-selli::radio name="g-rg" value="pro" label="Pro" checked />
+            <x-selli::radio name="g-rg" value="ent" label="Enterprise" />
+        </x-selli::radio-group>
+    </div>
+
+    <div class="shot shot--mid" data-shot="autocomplete">
+        <div class="selli-autocomplete" style="width:320px;">
+            <div class="selli-input-wrap">
+                <span class="selli-input-wrap__icon"><x-selli::icon name="search" :size="18" /></span>
+                <input class="selli-input selli-input--has-icon" value="Mil" readonly>
+            </div>
+            <div class="selli-autocomplete__menu" style="position:static;margin-top:6px;animation:none;">
+                <div class="selli-autocomplete__option selli-autocomplete__option--active">Milano</div>
+                <div class="selli-autocomplete__option">Milano Marittima</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="editor">
+        <x-selli::editor value="<p><b>Testo</b> formattato con <i>corsivo</i> e un elenco.</p><ul><li>Primo punto</li><li>Secondo punto</li></ul>" />
+    </div>
+
+    <div class="shot" data-shot="datepicker">
+        <div style="display:flex;flex-direction:column;gap:8px;width:300px;">
+            <div class="selli-input-wrap">
+                <span class="selli-input-wrap__icon"><x-selli::icon name="calendar" :size="18" /></span>
+                <input class="selli-input selli-input--has-icon" value="14/02/2027" readonly>
+            </div>
+            <x-selli::calendar :month="2" :year="2027" selected="2027-02-14" />
+        </div>
+    </div>
+
+    <div class="shot" data-shot="dropdown">
+        <div style="display:inline-flex;flex-direction:column;gap:8px;align-items:flex-start;">
+            <x-selli::button variant="secondary" icon-right="chevron-down">Opzioni</x-selli::button>
+            <x-selli::menu style="width:220px;">
+                <x-selli::menu.item icon="user">Profilo</x-selli::menu.item>
+                <x-selli::menu.item icon="settings">Impostazioni</x-selli::menu.item>
+                <x-selli::menu.separator />
+                <x-selli::menu.item icon="log-out" :danger="true">Esci</x-selli::menu.item>
+            </x-selli::menu>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="popover">
+        <div style="display:inline-flex;flex-direction:column;gap:8px;align-items:flex-start;">
+            <x-selli::button variant="ghost" icon="info">Dettagli</x-selli::button>
+            <div class="selli-popover__panel" style="position:static;width:280px;animation:none;">
+                <x-selli::heading :level="5">Spazio occupato</x-selli::heading>
+                <div style="margin-top:10px;"><x-selli::progress :value="64" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="command">
+        <div class="selli-command" style="width:420px;">
+            <div class="selli-command__search">
+                <x-selli::icon name="search" :size="18" color="var(--muted-foreground)" />
+                <input class="selli-command__input" value="cli" readonly>
+                <x-selli::kbd>ESC</x-selli::kbd>
+            </div>
+            <div class="selli-command__list">
+                <a class="selli-command__item selli-command__item--active"><span>Apri il CRM</span><span class="selli-command__item-shortcut"><kbd class="selli-kbd">C</kbd></span></a>
+                <a class="selli-command__item"><span>Crea nuovo cliente</span></a>
+                <a class="selli-command__item"><span>Vai alle impostazioni</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="shot shot--mid" data-shot="toast">
+        <div class="stack">
+            <div class="selli-toast selli-toast--success" style="min-width:320px;">
+                <span class="selli-toast__icon"><x-selli::icon name="circle-check" :size="20" /></span>
+                <div class="selli-toast__body"><div class="selli-toast__title">Salvato</div><div class="selli-toast__msg">Modifiche applicate.</div></div>
+                <button class="selli-toast__close">&times;</button>
+            </div>
+            <div class="selli-toast selli-toast--danger" style="min-width:320px;">
+                <span class="selli-toast__icon"><x-selli::icon name="alert-circle" :size="20" /></span>
+                <div class="selli-toast__body"><div class="selli-toast__title">Errore</div><div class="selli-toast__msg">Riprova più tardi.</div></div>
+                <button class="selli-toast__close">&times;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="shot shot--wide" data-shot="navbar">
+        <x-selli::navbar style="position:static;border-radius:14px;">
+            <x-slot:start><x-selli::brand /></x-slot:start>
+            <x-slot:end>
+                <x-selli::button size="sm" variant="ghost">Accedi</x-selli::button>
+                <x-selli::button size="sm">Registrati</x-selli::button>
+            </x-slot:end>
+        </x-selli::navbar>
+    </div>
+
+    <div class="shot shot--wide" data-shot="page-head">
+        <x-selli::page-head title="Clienti" sub="42 clienti attivi · 12 nuovi questo mese">
+            <x-slot:actions>
+                <x-selli::button variant="ghost" icon="download">Esporta</x-selli::button>
+                <x-selli::button icon="plus">Aggiungi</x-selli::button>
+            </x-slot:actions>
+        </x-selli::page-head>
+    </div>
+
+    <div class="shot shot--mid" data-shot="panel">
+        <x-selli::panel title="Vendite" sub="Ultimi 30 giorni">
+            <x-slot:action><x-selli::badge tone="success" icon="trending-up">+18%</x-selli::badge></x-slot:action>
+            <x-selli::text>Contenuto del pannello, con intestazione e azione.</x-selli::text>
+        </x-selli::panel>
+    </div>
+
+    <div class="shot shot--mid" data-shot="empty-state">
+        <x-selli::empty-state icon="inbox" title="Nessun messaggio" desc="La tua casella è vuota. Inizia una nuova conversazione.">
+            <x-slot:action><x-selli::button icon="plus">Componi</x-selli::button></x-slot:action>
+        </x-selli::empty-state>
+    </div>
+
+    <div class="shot" data-shot="theme-controls">
+        <div class="row">
+            <x-selli::theme-toggle />
+            <x-selli::theme-switcher />
+        </div>
+    </div>
 </div>

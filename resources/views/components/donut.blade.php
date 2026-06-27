@@ -14,6 +14,13 @@
     $circ = 2 * M_PI * $r;
     $dash = round($circ * $pct / 100, 2);
     $gap = round($circ - $dash, 2);
+
+    // Centre text geometry. Both texts use a central baseline; when a label is
+    // present the value shifts up and the label sits clearly below it.
+    $valueSize = round($size * ($label ? 0.18 : 0.22));
+    $labelSize = round($size * 0.085);
+    $valueY = $label ? round($cx - $size * 0.075) : $cx;
+    $labelY = round($cx + $size * 0.15);
 @endphp
 <svg {{ $attributes->class(['selli-donut']) }} width="{{ $size }}" height="{{ $size }}" viewBox="0 0 {{ $size }} {{ $size }}" role="img" aria-label="{{ $label ?? ($pct.'%') }}">
     <circle class="selli-donut__track" cx="{{ $cx }}" cy="{{ $cx }}" r="{{ $r }}" stroke-width="{{ $thickness }}" />
@@ -24,8 +31,8 @@
         transform="rotate(-90 {{ $cx }} {{ $cx }})"
         style="transition:stroke-dasharray var(--dur-slow) var(--ease-out);"
     />
-    <text class="selli-donut__center-value" x="{{ $cx }}" y="{{ $label ? $cx - 6 : $cx }}" style="font-size:{{ round($size * 0.2) }}px;">{{ round($pct) }}%</text>
+    <text class="selli-donut__center-value" x="{{ $cx }}" y="{{ $valueY }}" style="font-size:{{ $valueSize }}px;">{{ round($pct) }}%</text>
     @if ($label)
-        <text class="selli-donut__center-label" x="{{ $cx }}" y="{{ $cx + 12 }}" style="font-size:{{ round($size * 0.1) }}px;">{{ $label }}</text>
+        <text class="selli-donut__center-label" x="{{ $cx }}" y="{{ $labelY }}" style="font-size:{{ $labelSize }}px;dominant-baseline:central;">{{ $label }}</text>
     @endif
 </svg>

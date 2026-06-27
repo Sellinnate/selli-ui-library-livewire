@@ -7,6 +7,8 @@ description: "navbar, navlist, breadcrumbs, pagination and the ⌘K command pale
 
 ## Navbar
 
+![Navbar](/assets/components/navbar.png)
+
 A sticky top bar with glass blur. Three slots: `start`, `center`, `end`.
 
 ```blade
@@ -78,6 +80,8 @@ style it — the pagination component is presentational.
 :::
 
 ## Command palette (⌘K)
+
+![Command palette](/assets/components/command.png)
 
 A searchable command launcher. Opens on **⌘K / Ctrl-K**, on a `selli-open-command`
 event, and filters as you type.

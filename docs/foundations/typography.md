@@ -27,6 +27,8 @@ A display-led scale with tight tracking on the big sizes.
 
 ## The `heading` component
 
+![Heading](/assets/components/heading.png)
+
 Renders an `<h1>`–`<h6>` with the right size for its level. `level` picks the tag
 **and** size; `gradient` paints the text with a subtle gradient ink.
 
@@ -41,6 +43,8 @@ Renders an `<h1>`–`<h6>` with the right size for its level. `level` picks the 
 | `gradient` | `false` | Gradient text fill. |
 
 ## The `text` component
+
+![Text](/assets/components/text.png)
 
 Body copy with a colour and size, as any tag.
 

@@ -21,6 +21,8 @@ in `playwright/dist/`).
 
 ## Dashboard
 
+![Dashboard example](/assets/components/page-dashboard.png)
+
 `examples/dashboard.blade.php` — an analytics home built from:
 
 - `app-shell` with a `navlist` sidebar, a user `dropdown`, a notifications button
@@ -34,6 +36,8 @@ It's the best single tour of the library.
 
 ## CRM
 
+![CRM example](/assets/components/page-crm.png)
+
 `examples/crm.blade.php` — a list/management screen:
 
 - `page-head` with filter / add actions.
@@ -42,6 +46,8 @@ It's the best single tour of the library.
 - A results count and `pagination`.
 
 ## Settings
+
+![Settings example](/assets/components/page-settings.png)
 
 `examples/settings.blade.php` — a preferences screen:
 
@@ -57,3 +63,19 @@ These pages use the same public components documented throughout this site —
 there is nothing private or special in them. Copy a page into your app's views,
 swap the placeholder data for your own (or `wire:model` bindings), and you have a
 working screen.
+
+## Auth & legal pages
+
+The ready-made guest, stacked and error layouts, rendered end to end:
+
+| Login | Register (split) |
+|---|---|
+| ![Login](/assets/components/page-login.png) | ![Register](/assets/components/page-register.png) |
+
+| Verify email | Forgot password |
+|---|---|
+| ![Verifica email](/assets/components/page-verify-email.png) | ![Password dimenticata](/assets/components/page-forgot-password.png) |
+
+| Privacy policy (stacked + prose) | Error 404 |
+|---|---|
+| ![Privacy](/assets/components/page-privacy.png) | ![404](/assets/components/page-error-404.png) |

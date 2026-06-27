@@ -70,6 +70,8 @@ list of `['label'=>, 'value'=>]`.
 
 ## Sparkline
 
+![Sparkline](/assets/components/sparkline.png)
+
 A tiny inline trend line — ideal inside stat cards.
 
 ```blade
@@ -114,6 +116,8 @@ dots. No JavaScript — navigation uses links you provide.
 | `prevUrl` / `nextUrl` | Navigation links. |
 
 ## Datepicker
+
+![Datepicker](/assets/components/datepicker.png)
 
 An input with a pop-up calendar (Alpine). Picks a date into a hidden field.
 

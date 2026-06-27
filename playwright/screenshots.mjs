@@ -35,6 +35,20 @@ for (const tile of tiles) {
   console.log('captured', `${name}.png`);
   n++;
 }
-console.log(`\n${n} screenshots written to docs/assets/components/`);
+console.log(`\n${n} component screenshots written.`);
+
+// Full-page screenshots of the layouts / example pages.
+const fullPages = ['dashboard', 'crm', 'settings', 'login', 'register', 'verify-email', 'forgot-password', 'privacy', 'error-404'];
+const wide = await ctx.newPage();
+await wide.setViewportSize({ width: 1366, height: 860 });
+for (const slug of fullPages) {
+  await wide.goto(`${base}/${slug}.html`, { waitUntil: 'networkidle' });
+  await wide.addStyleTag({ content: '*,*::before,*::after{animation:none !important;transition:none !important}' });
+  await wide.evaluate(() => document.fonts && document.fonts.ready);
+  await wide.waitForTimeout(350);
+  await wide.screenshot({ path: join(outDir, `page-${slug}.png`) });
+  console.log('captured', `page-${slug}.png`);
+}
+console.log(`\n${n} component + ${fullPages.length} page screenshots in docs/assets/components/`);
 
 await browser.close();

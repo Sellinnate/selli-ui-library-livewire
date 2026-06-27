@@ -35,6 +35,8 @@ The primary call to action. Renders a `<button>`, or an `<a>` when you pass
 
 ## Button group
 
+![Button group](/assets/components/button-group.png)
+
 Joins related buttons. `attached` (default) merges them into one pill; set it to
 `false` for spaced buttons.
 
@@ -71,6 +73,8 @@ on its own.
 
 ## Dropdown
 
+![Dropdown](/assets/components/dropdown.png)
+
 A trigger that toggles a `menu`. Put the trigger in the `trigger` slot and the
 items in the default slot. Closes on outside-click or `Esc`.
 
@@ -101,6 +105,8 @@ Like a dropdown, but opened by **right-clicking** the trigger area.
 ```
 
 ## Popover
+
+![Popover](/assets/components/popover.png)
 
 Like a dropdown, but the panel holds **any** content, not just menu items.
 

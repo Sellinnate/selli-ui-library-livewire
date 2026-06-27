@@ -45,6 +45,8 @@ To close all modals: dispatch `selli-close-modal` with no payload.
 
 ## Toast host
 
+![Toast](/assets/components/toast.png)
+
 Drop **one** host near the end of your layout. Then fire toasts from anywhere.
 
 ```blade

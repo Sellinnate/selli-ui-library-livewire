@@ -33,6 +33,8 @@ around any control.
 
 ## Input
 
+![Input](/assets/components/input.png)
+
 ```blade
 <x-selli::input placeholder="Cerca…" icon="search" :clearable="true" />
 <x-selli::input type="email" trailing="@selli.io" />
@@ -50,6 +52,8 @@ around any control.
 
 ## Textarea
 
+![Textarea](/assets/components/textarea.png)
+
 ```blade
 <x-selli::textarea rows="5" wire:model="bio" placeholder="Raccontaci di te…" />
 ```
@@ -57,6 +61,8 @@ around any control.
 Props: `rows`, `invalid`.
 
 ## Checkbox, radio, switch
+
+![Checkbox, radio, switch](/assets/components/choice.png)
 
 ```blade
 <x-selli::checkbox label="Accetto i termini" description="Leggi prima il contratto." value="1" wire:model="agree" />
@@ -68,6 +74,8 @@ All three accept a `label` (and checkbox/radio accept `description`). The native
 `<input>` receives your `wire:model`, `name`, `value` and `checked`.
 
 ## Checkbox group & radio group
+
+![Radio group](/assets/components/radio-group.png)
 
 Group related controls with a shared label and optional horizontal layout.
 
@@ -81,6 +89,8 @@ Group related controls with a shared label and optional horizontal layout.
 Props: `label`, `horizontal`.
 
 ## Select
+
+![Select](/assets/components/select.png)
 
 A styled native `<select>`. Pass an `options` array (or slot your own `<option>`s).
 
@@ -102,6 +112,8 @@ A styled native `<select>`. Pass an `options` array (or slot your own `<option>`
 
 ## Autocomplete
 
+![Autocomplete](/assets/components/autocomplete.png)
+
 A searchable combobox (Alpine). Filters a list as you type; writes the chosen
 value to a hidden field named `name`.
 
@@ -121,6 +133,8 @@ value to a hidden field named `name`.
 | `placeholder` / `empty` | Input placeholder / no-results text. |
 
 ## Editor
+
+![Editor](/assets/components/editor.png)
 
 A lightweight rich-text editor (bold / italic / underline / list) backed by a
 hidden field for form submission.

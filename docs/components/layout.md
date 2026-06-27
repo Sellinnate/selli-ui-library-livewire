@@ -7,6 +7,8 @@ description: "app-shell, panel, stat-card, page-head, empty-state, theme-toggle 
 
 ## App shell
 
+![App shell](/assets/components/page-dashboard.png)
+
 The full application chrome: a sticky sidebar (brand + navigation + user) and a
 main column with a sticky topbar and a centered, scrolling content area. It's
 responsive — on mobile the sidebar becomes a slide-in drawer with a hamburger.
@@ -46,6 +48,8 @@ Slots: `brand`, `sidebar`, `user`, `actions`, default (content). Pair it with a
 
 ## Panel
 
+![Panel](/assets/components/panel.png)
+
 A titled container card with an optional header action.
 
 ```blade
@@ -78,6 +82,8 @@ A metric tile with an icon, value, trend delta and optional sparkline.
 
 ## Page head
 
+![Page head](/assets/components/page-head.png)
+
 A page title + subtitle + actions row.
 
 ```blade
@@ -88,6 +94,8 @@ A page title + subtitle + actions row.
 
 ## Empty state
 
+![Empty state](/assets/components/empty-state.png)
+
 A friendly placeholder when there's nothing to show.
 
 ```blade
@@ -97,6 +105,8 @@ A friendly placeholder when there's nothing to show.
 ```
 
 ## Theme toggle & colour switcher
+
+![Theme toggle e colour switcher](/assets/components/theme-controls.png)
 
 `theme-toggle` is a dark/light switch; `theme-switcher` is a palette dropdown for
 the six colour themes. Both persist to `localStorage`. See
@@ -121,6 +131,8 @@ the six colour themes. Both persist to `localStorage`. See
 to 1 on phones.
 
 ## Guest layout & auth card
+
+![Guest layout (split) in azione](/assets/components/page-register.png)
 
 ![Auth card](/assets/components/auth-card.png)
 
@@ -153,6 +165,8 @@ Slots: `logo` (override the brand), default (body), `footer`.
 
 ## Stacked (vertical) layout
 
+![Stacked layout](/assets/components/page-privacy.png)
+
 The sidebar-less counterpart to the app shell: a top navbar, a centered content
 column and an optional footer.
 
@@ -172,6 +186,8 @@ column and an optional footer.
 ```
 
 ## Error page
+
+![Error page](/assets/components/page-error-404.png)
 
 A centered error screen with a big gradient code.
 

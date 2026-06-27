@@ -73,6 +73,12 @@ $pages = [
     'crm' => 'CRM',
     'settings' => 'Impostazioni',
     'kitchen' => 'Kitchen sink',
+    'login' => 'Accedi',
+    'register' => 'Registrati',
+    'forgot-password' => 'Password dimenticata',
+    'verify-email' => 'Verifica email',
+    'privacy' => 'Privacy Policy',
+    'error-404' => 'Errore 404',
 ];
 
 foreach ($pages as $view => $title) {

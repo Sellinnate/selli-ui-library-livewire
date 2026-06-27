@@ -117,3 +117,85 @@ the six colour themes. Both persist to `localStorage`. See
 
 `--4` and `--3` collapse to 2 columns on tablets and 1 on phones; `--2` collapses
 to 1 on phones.
+
+## Guest layout & auth card
+
+For login / register / password / verify-email screens. `guest-layout` is a
+full-screen centered wrapper with a soft brand glow; `auth-card` is the form card.
+
+```blade
+<x-selli::guest-layout>
+    <x-selli::auth-card title="Bentornato" sub="Accedi al tuo account">
+        <form class="selli-auth-card__body" method="POST" action="/login">
+            @csrf
+            <x-selli::field label="Email" for="email">
+                <x-selli::input id="email" type="email" name="email" icon="mail" required />
+            </x-selli::field>
+            <x-selli::field label="Password" for="password">
+                <x-selli::input id="password" type="password" name="password" icon="lock" required />
+            </x-selli::field>
+            <x-selli::button type="submit" :full="true">Accedi</x-selli::button>
+        </form>
+        <x-slot:footer>Non hai un account? <a href="/register">Registrati</a></x-slot:footer>
+    </x-selli::auth-card>
+</x-selli::guest-layout>
+```
+
+`guest-layout` with `:split="true"` adds a branded left panel (`brand`, `aside`,
+`asideFooter` slots) next to the centered content — great for sign-up pages.
+
+`auth-card` props: `title`, `sub`, `brand` (show the default logo, default `true`).
+Slots: `logo` (override the brand), default (body), `footer`.
+
+## Stacked (vertical) layout
+
+The sidebar-less counterpart to the app shell: a top navbar, a centered content
+column and an optional footer.
+
+```blade
+<x-selli::stacked-layout>
+    <x-slot:navbar>
+        <x-selli::navbar>
+            <x-slot:start><x-selli::brand /></x-slot:start>
+            <x-slot:end><x-selli::button size="sm">Accedi</x-selli::button></x-slot:end>
+        </x-selli::navbar>
+    </x-slot:navbar>
+
+    <h1>Contenuto della pagina</h1>
+
+    <x-slot:footer>© 2026 Sellinnate</x-slot:footer>
+</x-selli::stacked-layout>
+```
+
+## Error page
+
+A centered error screen with a big gradient code.
+
+```blade
+<x-selli::error-page code="404" title="Pagina non trovata" desc="L'indirizzo non esiste.">
+    <x-slot:actions><x-selli::button href="/" icon="home">Torna alla home</x-selli::button></x-slot:actions>
+</x-selli::error-page>
+```
+
+Props: `code`, `title`, `desc`. Slots: `actions`, default.
+
+## Prose (legal / policy content)
+
+A readable column that styles plain HTML headings, paragraphs, lists and links —
+ideal for privacy policies, terms and documentation.
+
+```blade
+<x-selli::prose title="Privacy Policy" meta="Ultimo aggiornamento: 1 giugno 2026">
+    <h2>1. Titolare del trattamento</h2>
+    <p>…</p>
+    <ul><li>…</li></ul>
+</x-selli::prose>
+```
+
+Props: `title`, `meta`. Everything else is your own markup.
+
+::: callout tip "See them assembled"
+The package ships ready-to-copy example pages: `login`, `register`,
+`forgot-password`, `verify-email`, `privacy` and `error-404` under
+`resources/views/examples/`.
+:::

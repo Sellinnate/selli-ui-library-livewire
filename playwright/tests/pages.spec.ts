@@ -5,6 +5,12 @@ const pages = [
   { path: '/crm.html', heading: 'Clienti' },
   { path: '/settings.html', heading: 'Impostazioni' },
   { path: '/kitchen.html', heading: 'Kitchen sink' },
+  { path: '/login.html', heading: 'Bentornato' },
+  { path: '/register.html', heading: 'Crea il tuo account' },
+  { path: '/forgot-password.html', heading: 'Reimposta la password' },
+  { path: '/verify-email.html', heading: 'Verifica la tua email' },
+  { path: '/privacy.html', heading: 'Privacy Policy' },
+  { path: '/error-404.html', heading: 'Pagina non trovata' },
 ];
 
 for (const p of pages) {

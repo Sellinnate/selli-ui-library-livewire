@@ -92,6 +92,11 @@ their parent.
 | `<x-selli::empty-state>` | [Layout](/components/layout) |
 | `<x-selli::theme-toggle>` | [Layout](/components/layout) |
 | `<x-selli::theme-switcher>` | [Theming](/getting-started/theming) |
+| `<x-selli::guest-layout>` | [Layout](/components/layout) |
+| `<x-selli::auth-card>` | [Layout](/components/layout) |
+| `<x-selli::stacked-layout>` | [Layout](/components/layout) |
+| `<x-selli::error-page>` | [Layout](/components/layout) |
+| `<x-selli::prose>` | [Layout](/components/layout) |
 
 ::: callout info "PHP API"
 The package also exposes `\Selli\Ui\Facades\SelliUi` (`::css()`, `::js()`,

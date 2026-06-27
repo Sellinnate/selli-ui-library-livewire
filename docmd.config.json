@@ -1,0 +1,84 @@
+{
+  "title": "Selli UI",
+  "url": "https://selli-ui.selli.io",
+  "src": "docs",
+  "out": "site",
+  "engine": "js",
+  "layout": {
+    "spa": true,
+    "header": { "enabled": true },
+    "sidebar": { "collapsible": true, "defaultCollapsed": false },
+    "optionsMenu": {
+      "position": "sidebar-top",
+      "components": { "search": true, "themeSwitch": true }
+    },
+    "footer": {
+      "style": "minimal",
+      "content": "© 2026 Sellinnate — Selli UI. MIT licensed.",
+      "branding": true
+    }
+  },
+  "theme": {
+    "name": "default",
+    "appearance": "system",
+    "codeHighlight": true
+  },
+  "minify": true,
+  "autoTitleFromH1": true,
+  "copyCode": true,
+  "pageNavigation": true,
+  "navigation": [
+    { "title": "Introduction", "path": "/", "icon": "home" },
+    {
+      "title": "Getting Started",
+      "icon": "rocket",
+      "collapsible": false,
+      "children": [
+        { "title": "What is Selli UI? (start here)", "path": "/getting-started/what-is-selli-ui", "icon": "lightbulb" },
+        { "title": "Installation", "path": "/getting-started/installation", "icon": "download" },
+        { "title": "Quickstart", "path": "/getting-started/quickstart", "icon": "zap" },
+        { "title": "Theming & dark mode", "path": "/getting-started/theming", "icon": "palette" },
+        { "title": "Using with Livewire", "path": "/getting-started/livewire", "icon": "refresh-cw" }
+      ]
+    },
+    {
+      "title": "Foundations",
+      "icon": "book-open",
+      "children": [
+        { "title": "Design tokens", "path": "/foundations/design-tokens", "icon": "sliders-horizontal" },
+        { "title": "Colors", "path": "/foundations/colors", "icon": "palette" },
+        { "title": "Typography", "path": "/foundations/typography", "icon": "type" },
+        { "title": "Icons", "path": "/foundations/icons", "icon": "image" }
+      ]
+    },
+    {
+      "title": "Components",
+      "icon": "layout-grid",
+      "children": [
+        { "title": "Overview", "path": "/components/overview", "icon": "layers" },
+        { "title": "Buttons & actions", "path": "/components/actions", "icon": "mouse-pointer-click" },
+        { "title": "Display & content", "path": "/components/display", "icon": "credit-card" },
+        { "title": "Forms & inputs", "path": "/components/forms", "icon": "edit" },
+        { "title": "Data display", "path": "/components/data", "icon": "bar-chart-3" },
+        { "title": "Feedback", "path": "/components/feedback", "icon": "bell" },
+        { "title": "Navigation", "path": "/components/navigation", "icon": "compass" },
+        { "title": "Overlays", "path": "/components/overlays", "icon": "layers" },
+        { "title": "Layout & app shell", "path": "/components/layout", "icon": "panel-left" }
+      ]
+    },
+    {
+      "title": "Examples",
+      "icon": "monitor",
+      "children": [
+        { "title": "Dashboard, CRM & Settings", "path": "/examples/pages", "icon": "layout-dashboard" }
+      ]
+    },
+    {
+      "title": "Reference",
+      "icon": "list",
+      "children": [
+        { "title": "All components", "path": "/reference/components", "icon": "table" }
+      ]
+    }
+  ]
+}

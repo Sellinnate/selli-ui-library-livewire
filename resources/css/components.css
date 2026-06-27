@@ -1,0 +1,296 @@
+/* ============================================================
+   Selli UI — component styles (class-based, token-driven)
+   Every rule resolves to design-system custom properties so the
+   whole library re-themes when --primary / density / appearance
+   change. Hover / focus states are pure CSS (no JS required).
+   ============================================================ */
+
+/* ───────────────────────── Button ───────────────────────── */
+.selli-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--dur-slow) var(--ease-out);
+  line-height: 1;
+}
+.selli-btn--sm { height: 2.25rem; padding: 0 1rem; font-size: var(--text-sm); }
+.selli-btn--md { height: 2.75rem; padding: 0 1.5rem; font-size: var(--text-base); }
+.selli-btn--lg { height: 3.5rem; padding: 0 2rem; font-size: var(--text-lg); }
+.selli-btn--primary { background: var(--primary); color: #fff; box-shadow: var(--glow-md); }
+.selli-btn--primary:hover { background: var(--violet-600); box-shadow: var(--glow-lg); }
+.selli-btn--secondary { background: var(--surface-raised); color: var(--foreground); border-color: var(--border); }
+.selli-btn--secondary:hover { background: rgba(255, 255, 255, 0.10); }
+.selli-btn--ghost { background: transparent; color: var(--foreground); border-color: var(--border); }
+.selli-btn--ghost:hover { background: var(--surface-raised); }
+.selli-btn--link { background: transparent; color: var(--primary); border-radius: 0; height: auto; padding: 0; box-shadow: none; }
+.selli-btn--link:hover { color: var(--link-hover); }
+.selli-btn--blue { background: var(--blue-600); color: #fff; box-shadow: var(--glow-blue); }
+.selli-btn--blue:hover { background: var(--blue-500); }
+.selli-btn--full { width: 100%; }
+.selli-btn--pulse { animation: selli-btn-pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+.selli-btn:disabled,
+.selli-btn[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }
+.selli-btn__icon-right { transition: transform var(--dur) var(--ease-out); }
+.selli-btn:hover .selli-btn__icon-right { transform: translateX(3px); }
+
+/* ───────────────────────── Button group ───────────────────────── */
+.selli-btn-group { display: inline-flex; align-items: center; }
+.selli-btn-group--attached .selli-btn { border-radius: 0; }
+.selli-btn-group--attached .selli-btn:first-child { border-top-left-radius: var(--radius-full); border-bottom-left-radius: var(--radius-full); }
+.selli-btn-group--attached .selli-btn:last-child { border-top-right-radius: var(--radius-full); border-bottom-right-radius: var(--radius-full); }
+.selli-btn-group--attached .selli-btn:not(:first-child) { margin-left: -1px; }
+.selli-btn-group--spaced { gap: 0.5rem; }
+
+/* ───────────────────────── Badge ───────────────────────── */
+.selli-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(var(--blur-glass));
+  font-family: var(--font-sans);
+}
+.selli-badge--violet { background: var(--surface-raised); color: var(--primary); border-color: var(--border); }
+.selli-badge--blue { background: rgba(59, 130, 246, 0.12); color: var(--blue-400); border-color: rgba(59, 130, 246, 0.25); }
+.selli-badge--neutral { background: var(--surface-raised); color: var(--muted-foreground); border-color: var(--border); }
+.selli-badge--success { background: rgba(34, 197, 94, 0.12); color: var(--success); border-color: rgba(34, 197, 94, 0.25); }
+.selli-badge--warning { background: rgba(234, 179, 8, 0.12); color: var(--warning); border-color: rgba(234, 179, 8, 0.25); }
+.selli-badge--danger { background: rgba(244, 63, 94, 0.12); color: var(--danger); border-color: rgba(244, 63, 94, 0.25); }
+.selli-badge--outline { background: transparent; color: var(--muted-foreground); border-color: var(--border-strong); }
+.selli-badge--dashed { border-style: dashed; }
+
+/* ───────────────────────── Card ───────────────────────── */
+.selli-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: none;
+  transition: border-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
+  font-family: var(--font-sans);
+}
+.selli-card--hoverable:hover,
+.selli-card--glow { border-color: rgba(168, 85, 247, 0.3); box-shadow: var(--glow-card); }
+.selli-card--accent-blue.selli-card--hoverable:hover,
+.selli-card--accent-blue.selli-card--glow { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 0 30px rgba(59, 130, 246, 0.10); }
+.selli-card__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+.selli-card__title { font-size: var(--text-xl); font-weight: 600; color: var(--foreground); margin: 0 0 0.5rem; }
+.selli-card__body { font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--muted-foreground); margin: 0; }
+
+/* ───────────────────────── Stat ───────────────────────── */
+.selli-stat {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: none;
+  transition: border-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
+  font-family: var(--font-sans);
+}
+.selli-stat:hover { border-color: rgba(168, 85, 247, 0.3); box-shadow: var(--glow-card); }
+.selli-stat__value { font-size: var(--text-5xl); font-weight: 700; color: var(--primary); letter-spacing: var(--tracking-tight); margin-bottom: 0.5rem; line-height: 1; }
+.selli-stat__label { font-size: var(--text-xl); font-weight: 600; color: var(--foreground); margin: 0 0 0.5rem; }
+.selli-stat__body { font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--muted-foreground); margin: 0; }
+
+/* ───────────────────────── Eyebrow ───────────────────────── */
+.selli-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(var(--blur-glass));
+  font-family: var(--font-sans);
+}
+.selli-eyebrow__dot { position: relative; display: inline-flex; height: 8px; width: 8px; }
+.selli-eyebrow__dot::before { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: var(--primary); opacity: 0.75; animation: selli-eb-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.selli-eyebrow__dot::after { content: ""; position: relative; display: inline-flex; height: 8px; width: 8px; border-radius: 9999px; background: var(--primary); }
+
+/* ───────────────────────── Section heading ───────────────────────── */
+.selli-section-heading { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; text-align: left; font-family: var(--font-sans); }
+.selli-section-heading--center { align-items: center; text-align: center; max-width: 48rem; margin-inline: auto; }
+.selli-section-heading__title { font-size: var(--text-4xl); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: 1.12; margin: 0; color: var(--foreground); }
+.selli-section-heading__accent { color: var(--primary); }
+.selli-section-heading__lead { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--muted-foreground); margin: 0; max-width: 42rem; }
+
+/* ───────────────────────── Heading / Text ───────────────────────── */
+.selli-heading { margin: 0; font-family: var(--font-sans); font-weight: 700; line-height: 1.12; letter-spacing: var(--tracking-tight); color: var(--foreground); }
+.selli-heading--1 { font-size: var(--text-5xl); }
+.selli-heading--2 { font-size: var(--text-4xl); }
+.selli-heading--3 { font-size: var(--text-2xl); }
+.selli-heading--4 { font-size: var(--text-xl); }
+.selli-heading--5 { font-size: var(--text-lg); }
+.selli-heading--6 { font-size: var(--text-base); }
+.selli-heading--gradient {
+  color: transparent;
+  background: linear-gradient(90deg, var(--foreground), color-mix(in oklab, var(--foreground) 55%, var(--primary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.selli-text { margin: 0; font-family: var(--font-sans); font-size: var(--text-base); font-weight: 400; line-height: var(--leading-relaxed); color: var(--muted-foreground); }
+.selli-text--default { color: var(--foreground); }
+.selli-text--muted { color: var(--muted-foreground); }
+.selli-text--subtle { color: color-mix(in oklab, var(--muted-foreground) 70%, transparent); }
+.selli-text--brand { color: var(--primary); }
+.selli-text--danger { color: var(--danger); }
+.selli-text--success { color: var(--success); }
+
+/* ───────────────────────── Separator ───────────────────────── */
+.selli-separator { height: 1px; width: 100%; background: var(--border); border: 0; }
+.selli-separator--vertical { width: 1px; height: auto; align-self: stretch; }
+.selli-separator--labeled { display: flex; align-items: center; gap: 0.75rem; background: none; height: auto; }
+.selli-separator__line { flex: 1; height: 1px; background: var(--border); }
+.selli-separator__label { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground); }
+
+/* ───────────────────────── Avatar ───────────────────────── */
+.selli-avatar { position: relative; display: inline-flex; flex-shrink: 0; }
+.selli-avatar__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--primary) 22%, var(--card));
+  color: var(--foreground);
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.selli-avatar--square .selli-avatar__img { border-radius: var(--radius-lg); }
+.selli-avatar--ring .selli-avatar__img { border: 2px solid var(--ring); }
+.selli-avatar__img img { width: 100%; height: 100%; object-fit: cover; }
+.selli-avatar--xs .selli-avatar__img { width: 24px; height: 24px; font-size: 9.6px; }
+.selli-avatar--sm .selli-avatar__img { width: 32px; height: 32px; font-size: 12.8px; }
+.selli-avatar--md .selli-avatar__img { width: 40px; height: 40px; font-size: 16px; }
+.selli-avatar--lg .selli-avatar__img { width: 48px; height: 48px; font-size: 19.2px; }
+.selli-avatar--xl .selli-avatar__img { width: 64px; height: 64px; font-size: 25.6px; }
+.selli-avatar__status { position: absolute; right: 0; bottom: 0; border-radius: 50%; border: 2px solid var(--card); width: 10px; height: 10px; }
+.selli-avatar--xs .selli-avatar__status { width: 8px; height: 8px; }
+.selli-avatar--lg .selli-avatar__status,
+.selli-avatar--xl .selli-avatar__status { width: 14px; height: 14px; }
+.selli-avatar__status--online { background: var(--success); }
+.selli-avatar__status--busy { background: var(--danger); }
+.selli-avatar__status--away { background: var(--warning); }
+.selli-avatar__status--offline { background: var(--muted-foreground); }
+.selli-avatar-group { display: inline-flex; align-items: center; }
+.selli-avatar-group > * { box-shadow: 0 0 0 2px var(--card); border-radius: 50%; }
+.selli-avatar-group > *:not(:first-child) { margin-left: -0.7rem; }
+.selli-avatar-group__more {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--muted); color: var(--muted-foreground);
+  border: 1px solid var(--border); border-radius: 50%;
+  font-size: 13px; font-weight: 600; box-sizing: border-box;
+  width: 40px; height: 40px; margin-left: -0.7rem; box-shadow: 0 0 0 2px var(--card);
+}
+
+/* ───────────────────────── Brand ───────────────────────── */
+.selli-brand { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-sans); }
+.selli-brand__mark { display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: var(--radius-md); background: var(--primary); box-shadow: var(--glow-sm); flex-shrink: 0; width: 32px; height: 32px; }
+.selli-brand--sm .selli-brand__mark { width: 26px; height: 26px; }
+.selli-brand--lg .selli-brand__mark { width: 40px; height: 40px; }
+.selli-brand__mark i { display: block; width: 18%; height: 50%; border-radius: 99px; background: #fff; }
+.selli-brand__mark i:last-child { background: rgba(255, 255, 255, 0.85); }
+.selli-brand__text { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; color: var(--foreground); }
+.selli-brand--sm .selli-brand__text { font-size: var(--text-lg); }
+.selli-brand--lg .selli-brand__text { font-size: var(--text-2xl); }
+
+/* ───────────────────────── Kbd ───────────────────────── */
+.selli-kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; padding: 0 0.4rem;
+  font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 600;
+  color: var(--muted-foreground); background: var(--surface-raised);
+  border: 1px solid var(--border); border-bottom-width: 2px;
+  border-radius: var(--radius-sm); line-height: 1;
+}
+
+/* ───────────────────────── Spinner ───────────────────────── */
+.selli-spinner { display: inline-flex; animation: selli-spin 0.7s linear infinite; color: var(--primary); }
+
+/* ───────────────────────── Progress ───────────────────────── */
+.selli-progress { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-sans); }
+.selli-progress__head { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--muted-foreground); }
+.selli-progress__value { font-variant-numeric: tabular-nums; }
+.selli-progress__track { position: relative; height: 8px; border-radius: 99px; background: var(--surface-raised); overflow: hidden; border: 1px solid var(--border); }
+.selli-progress--sm .selli-progress__track { height: 4px; }
+.selli-progress--lg .selli-progress__track { height: 12px; }
+.selli-progress__bar { height: 100%; border-radius: 99px; background: var(--primary); box-shadow: var(--glow-sm); transition: width var(--dur-slow) var(--ease-out); }
+.selli-progress__bar--indeterminate { position: absolute; inset: 0; width: 40%; animation: selli-bar 1.2s var(--ease-in-out) infinite; }
+
+/* ───────────────────────── Skeleton ───────────────────────── */
+.selli-skeleton {
+  display: block; border-radius: var(--radius-md);
+  background: linear-gradient(90deg, var(--surface-raised) 25%, color-mix(in oklab, var(--surface-raised) 50%, var(--muted)) 37%, var(--surface-raised) 63%);
+  background-size: 200% 100%; animation: selli-shimmer 1.4s ease-in-out infinite;
+}
+.selli-skeleton--circle { border-radius: 50%; }
+
+/* ───────────────────────── Dot ───────────────────────── */
+.selli-dot { position: relative; display: inline-flex; width: 8px; height: 8px; }
+.selli-dot__core { position: relative; width: 100%; height: 100%; border-radius: 50%; background: var(--primary); }
+.selli-dot__ping { position: absolute; inset: 0; border-radius: 50%; background: var(--primary); opacity: 0.7; animation: selli-eb-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* ───────────────────────── Tooltip (CSS-only) ───────────────────────── */
+.selli-tooltip { position: relative; display: inline-flex; }
+.selli-tooltip__bubble {
+  position: absolute; z-index: 60; white-space: nowrap; opacity: 0; pointer-events: none;
+  padding: 0.35rem 0.6rem; font-size: var(--text-xs); font-weight: 500; font-family: var(--font-sans);
+  color: var(--foreground); background: color-mix(in oklab, var(--popover) 86%, black);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md); backdrop-filter: blur(8px);
+  transition: opacity var(--dur) var(--ease-out);
+}
+.selli-tooltip:hover .selli-tooltip__bubble,
+.selli-tooltip:focus-within .selli-tooltip__bubble { opacity: 1; }
+.selli-tooltip__bubble--top { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.selli-tooltip__bubble--bottom { top: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.selli-tooltip__bubble--left { right: calc(100% + 8px); top: 50%; transform: translateY(-50%); }
+.selli-tooltip__bubble--right { left: calc(100% + 8px); top: 50%; transform: translateY(-50%); }
+
+/* ───────────────────────── Callout ───────────────────────── */
+.selli-callout {
+  display: flex; gap: 0.85rem; padding: 1rem 1.1rem; border-radius: var(--radius-xl);
+  font-family: var(--font-sans);
+  background: color-mix(in oklab, var(--primary) 9%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--primary) 28%, transparent);
+}
+.selli-callout--success { background: color-mix(in oklab, var(--success) 9%, var(--card)); border-color: color-mix(in oklab, var(--success) 28%, transparent); }
+.selli-callout--warning { background: color-mix(in oklab, var(--warning) 9%, var(--card)); border-color: color-mix(in oklab, var(--warning) 28%, transparent); }
+.selli-callout--danger { background: color-mix(in oklab, var(--danger) 9%, var(--card)); border-color: color-mix(in oklab, var(--danger) 28%, transparent); }
+.selli-callout__icon { margin-top: 1px; color: var(--primary); flex-shrink: 0; }
+.selli-callout--success .selli-callout__icon { color: var(--success); }
+.selli-callout--warning .selli-callout__icon { color: var(--warning); }
+.selli-callout--danger .selli-callout__icon { color: var(--danger); }
+.selli-callout__body { flex: 1; min-width: 0; }
+.selli-callout__title { font-size: var(--text-sm); font-weight: 600; color: var(--foreground); }
+.selli-callout__text { font-size: var(--text-sm); line-height: 1.55; color: var(--muted-foreground); margin-top: 4px; }
+.selli-callout__dismiss { background: none; border: none; cursor: pointer; color: var(--muted-foreground); padding: 2px; border-radius: 6px; height: fit-content; display: flex; }

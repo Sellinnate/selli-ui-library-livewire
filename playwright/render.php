@@ -12,12 +12,13 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
+use Orchestra\Testbench\Foundation\Application;
+use Selli\Ui\SelliUiServiceProvider;
 
-$app = \Orchestra\Testbench\Foundation\Application::create(
+$app = Application::create(
     basePath: \Orchestra\Testbench\package_path('vendor/orchestra/testbench-core/laravel'),
-    options: ['extra' => ['providers' => [\Selli\Ui\SelliUiServiceProvider::class]]],
+    options: ['extra' => ['providers' => [SelliUiServiceProvider::class]]],
 );
 
 $root = dirname(__DIR__);

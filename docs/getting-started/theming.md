@@ -42,25 +42,73 @@ tiny inline script high in your `<head>`:
 </script>
 ```
 
-## Changing the brand colour
+## Colour themes
 
-The accent colour is the token `--primary` (Electric Violet by default). Override
-it anywhere — globally on `:root`, or scoped to a section:
+Selli UI ships **six built-in colour themes**: the default **violet** (the Selli
+brand) plus **blue, emerald, amber, rose and cyan**. Switch by setting
+`data-theme` on `<html>` (omit it, or use `violet`, for the default):
+
+```blade
+<html data-theme="emerald"> … </html>
+```
+
+Everything re-colours instantly — not just `--primary`, but the focus rings, the
+signature glow, link hover, active nav items, charts and accent borders. That's
+because those tokens **derive from `--primary`** via `color-mix`, so a theme only
+needs to redefine one colour. (Light themes like amber also set a darker
+`--primary-foreground` so text on the accent stays readable.)
+
+### A user-facing colour switcher
+
+The `theme-switcher` component is a palette dropdown of all six themes. It applies
+`data-theme` and remembers the choice in `localStorage` under `selli-color`:
+
+```blade
+<x-selli::theme-switcher />
+
+{{-- or restrict / relabel the choices --}}
+<x-selli::theme-switcher :themes="['violet' => 'Brand', 'blue' => 'Ocean']" />
+```
+
+The **app shell** already includes it (next to the light/dark toggle) in its
+topbar.
+
+### Your own brand colour
+
+Not limited to the six — override `--primary` (and optionally `--primary-hover`
+and `--primary-foreground`) anywhere:
 
 ```css
 :root {
-    --primary: oklch(0.62 0.20 255); /* a blue brand */
+    --primary: oklch(0.62 0.20 255);
+    --primary-hover: oklch(0.55 0.22 258);
+    --primary-foreground: oklch(1 0 0); /* readable text on the accent */
 }
 ```
 
-Because every component reads `--primary`, the whole UI re-colours instantly —
-buttons, focus rings, active nav items, charts, the glow.
-
-::: callout tip "Built-in presets"
-The config file ships colour presets (violet, blue, emerald, amber, rose). Read
-them in PHP with `\Selli\Ui\Facades\SelliUi::colors()`, or wire a runtime
-switcher that sets `--primary` to one of those values.
+::: callout tip "Presets in PHP"
+Read the preset list with `\Selli\Ui\Facades\SelliUi::colors()` (returns the six
+`key => oklch` pairs from `config/selli-ui.php`).
 :::
+
+## Avoiding a flash on first paint
+
+`selli-ui.js` restores the saved colour theme and appearance, but it loads
+deferred — so for zero flash, inline this tiny script high in your `<head>`,
+before the stylesheet:
+
+```blade
+<script>
+    try {
+        var c = localStorage.getItem('selli-color');
+        if (c && c !== 'violet') document.documentElement.setAttribute('data-theme', c);
+        if (localStorage.getItem('selli-theme') === 'light') {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+        }
+    } catch (e) {}
+</script>
+```
 
 ## Density
 

@@ -65,7 +65,7 @@ img { display: block; max-width: 100%; }
 @keyframes selli-slide-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes selli-toast-in { from { opacity: 0; transform: translateX(16px) scale(.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
 @keyframes selli-bar { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
-@keyframes selli-btn-pulse { 0% { box-shadow: 0 0 0 0 rgba(168,85,247,.6); } 70% { box-shadow: 0 0 0 10px rgba(168,85,247,0); } 100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); } }
+@keyframes selli-btn-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 60%, transparent); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 @keyframes selli-eb-ping { 75%, 100% { transform: scale(2.2); opacity: 0; } }
 
 /* Custom scrollbar used on scrollable panes */

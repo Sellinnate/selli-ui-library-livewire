@@ -91,6 +91,7 @@ their parent.
 | `<x-selli::page-head>` | [Layout](/components/layout) |
 | `<x-selli::empty-state>` | [Layout](/components/layout) |
 | `<x-selli::theme-toggle>` | [Layout](/components/layout) |
+| `<x-selli::theme-switcher>` | [Theming](/getting-started/theming) |
 
 ::: callout info "PHP API"
 The package also exposes `\Selli\Ui\Facades\SelliUi` (`::css()`, `::js()`,

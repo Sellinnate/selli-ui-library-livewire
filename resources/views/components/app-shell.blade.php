@@ -34,6 +34,7 @@
                 </button>
             @endif
             {{ $actions ?? '' }}
+            <x-selli::theme-switcher />
             <x-selli::theme-toggle />
         </header>
         <div class="selli-app__content selli-scroll">

@@ -11,14 +11,17 @@
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
   --shadow-2xl: 0 0 50px rgba(0, 0, 0, 0.5);
 
-  /* Signature violet glow (primary buttons, hovered cards) */
-  --glow-sm: 0 0 15px rgba(168, 85, 247, 0.50);
-  --glow-md: 0 0 30px rgba(168, 85, 247, 0.40);
-  --glow-lg: 0 0 40px rgba(168, 85, 247, 0.60);
-  --glow-card: 0 0 30px rgba(168, 85, 247, 0.10);   /* subtle card hover */
-  --glow-image: 0 0 50px rgba(147, 51, 234, 0.15);  /* image card frame */
+  /* Signature glow — DERIVED from --primary, so it follows the active
+     colour theme (violet by default). See tokens/themes.css. */
+  --glow-sm: 0 0 15px color-mix(in oklab, var(--primary) 50%, transparent);
+  --glow-md: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent);
+  --glow-lg: 0 0 40px color-mix(in oklab, var(--primary) 60%, transparent);
+  --glow-card: 0 0 30px color-mix(in oklab, var(--primary) 12%, transparent); /* subtle card hover */
+  --glow-image: 0 0 50px color-mix(in oklab, var(--primary) 15%, transparent); /* image card frame */
+  /* accent border used on hovered/lit cards & stats (theme-aware) */
+  --accent-border: color-mix(in oklab, var(--primary) 32%, transparent);
 
-  /* Blue glow */
+  /* Blue glow (fixed, for the explicit "blue" variants) */
   --glow-blue: 0 0 20px rgba(37, 99, 235, 0.40);
 
   /* Glass blur (navbar, floating chips, badges) */

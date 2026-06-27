@@ -5,6 +5,7 @@
 
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
         <x-selli::theme-toggle data-testid="theme-toggle" />
+        <x-selli::theme-switcher data-testid="theme-switcher" />
         <span data-testid="theme-state" x-data x-text="document.documentElement.classList.contains('light') ? 'light' : 'dark'"></span>
     </div>
 

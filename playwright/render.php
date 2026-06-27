@@ -29,7 +29,7 @@ if (! is_dir($dist)) {
 
 // ── 1. CSS bundle (token layers in cascade order, then components) ──
 $cssOrder = [
-    'tokens/fonts.css', 'tokens/colors.css', 'tokens/typography.css',
+    'tokens/fonts.css', 'tokens/colors.css', 'tokens/themes.css', 'tokens/typography.css',
     'tokens/spacing.css', 'tokens/effects.css', 'tokens/density.css',
     'tokens/base.css', 'components.css',
 ];

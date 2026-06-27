@@ -180,6 +180,43 @@
     }));
   }
 
+  function registerTheming(Alpine) {
+    // ── Colour-theme switcher ─────────────────────────────────────
+    Alpine.data('selliThemeSwitcher', () => ({
+      open: false,
+      current: document.documentElement.getAttribute('data-theme') || 'violet',
+      pick(theme) {
+        this.current = theme;
+        if (theme === 'violet') {
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+        try { localStorage.setItem('selli-color', theme); } catch (e) {}
+        this.open = false;
+      },
+    }));
+  }
+
+  // Apply the persisted colour theme + appearance as early as possible.
+  // (For zero flash in production, also inline this in <head>; see the docs.)
+  try {
+    var savedColor = localStorage.getItem('selli-color');
+    if (savedColor && savedColor !== 'violet') {
+      document.documentElement.setAttribute('data-theme', savedColor);
+    }
+    if (localStorage.getItem('selli-theme') === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (e) {}
+
+  if (window.Alpine) {
+    registerTheming(window.Alpine);
+  } else {
+    document.addEventListener('alpine:init', () => registerTheming(window.Alpine));
+  }
+
   // Global imperative toast helper.
   window.selliToast = function (detail) {
     window.dispatchEvent(new CustomEvent('selli-toast', { detail: detail || {} }));

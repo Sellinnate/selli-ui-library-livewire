@@ -94,13 +94,15 @@ A friendly placeholder when there's nothing to show.
 </x-selli::empty-state>
 ```
 
-## Theme toggle
+## Theme toggle & colour switcher
 
-A dark/light switch that persists to `localStorage`. See
+`theme-toggle` is a dark/light switch; `theme-switcher` is a palette dropdown for
+the six colour themes. Both persist to `localStorage`. See
 **[Theming](/getting-started/theming)**.
 
 ```blade
 <x-selli::theme-toggle />
+<x-selli::theme-switcher />
 ```
 
 ## The grid helper

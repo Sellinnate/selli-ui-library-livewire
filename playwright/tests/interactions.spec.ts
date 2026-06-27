@@ -66,6 +66,27 @@ test('theme toggle switches appearance', async ({ page }) => {
   await expect.poll(async () => page.evaluate(() => document.documentElement.classList.contains('light'))).toBe(true);
 });
 
+test('colour theme switcher changes --primary and persists', async ({ page }) => {
+  const primaryBefore = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue('--primary').trim(),
+  );
+
+  await page.getByTestId('theme-switcher').getByRole('button').first().click();
+  await page.getByRole('menuitemradio', { name: 'Smeraldo' }).click();
+
+  await expect.poll(async () =>
+    page.evaluate(() => document.documentElement.getAttribute('data-theme')),
+  ).toBe('emerald');
+
+  const primaryAfter = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue('--primary').trim(),
+  );
+  expect(primaryAfter).not.toBe(primaryBefore);
+
+  // persisted to localStorage
+  expect(await page.evaluate(() => localStorage.getItem('selli-color'))).toBe('emerald');
+});
+
 test('autocomplete filters options', async ({ page }) => {
   const input = page.getByTestId('autocomplete').getByRole('textbox');
   await input.click();

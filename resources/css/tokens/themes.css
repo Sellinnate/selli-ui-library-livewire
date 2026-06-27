@@ -1,0 +1,41 @@
+/* ============================================================
+   Selli — Colour themes
+   The default brand is Electric Violet (defined on :root in
+   colors.css). Setting data-theme on <html> (or any ancestor)
+   swaps the brand colour. Because glows, focus rings, link hover
+   and accent borders all DERIVE from --primary via color-mix,
+   each theme only needs to set --primary, its hover shade and —
+   for light brand colours — a readable --primary-foreground.
+
+   Works in both dark and light appearance (combine with .light).
+   ============================================================ */
+
+[data-theme="blue"] {
+  --primary: var(--blue-500);
+  --primary-hover: var(--blue-600);
+  --primary-foreground: oklch(1 0 0);
+}
+
+[data-theme="emerald"] {
+  --primary: var(--emerald-500);
+  --primary-hover: var(--emerald-600);
+  --primary-foreground: oklch(0.18 0.03 160);
+}
+
+[data-theme="amber"] {
+  --primary: var(--amber-500);
+  --primary-hover: var(--amber-600);
+  --primary-foreground: oklch(0.2 0.04 80); /* dark ink — amber is light, white fails contrast */
+}
+
+[data-theme="rose"] {
+  --primary: var(--rose-500);
+  --primary-hover: var(--rose-600);
+  --primary-foreground: oklch(1 0 0);
+}
+
+[data-theme="cyan"] {
+  --primary: var(--cyan-500);
+  --primary-hover: var(--cyan-600);
+  --primary-foreground: oklch(0.18 0.03 220);
+}

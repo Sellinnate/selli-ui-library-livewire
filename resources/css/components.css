@@ -407,7 +407,8 @@
 .selli-menu__label { padding: 0.4rem 0.65rem; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-foreground); }
 .selli-menu__item { display: flex; align-items: center; gap: 0.6rem; width: 100%; padding: 0.5rem 0.65rem; border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--foreground); background: none; border: none; cursor: pointer; text-align: left; text-decoration: none; transition: background var(--dur) var(--ease-out); }
 .selli-menu__item:hover,
-.selli-menu__item:focus-visible { background: var(--surface-raised); outline: none; }
+.selli-menu__item:focus-visible { background: var(--surface-raised); }
+.selli-menu__item:focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }
 .selli-menu__item--danger { color: var(--danger); }
 .selli-menu__item--danger:hover { background: color-mix(in oklab, var(--danger) 12%, transparent); }
 .selli-menu__item[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }

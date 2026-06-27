@@ -28,6 +28,10 @@
         @endif
     </span>
     @if ($status)
+        @php
+            $statusLabels = ['online' => 'Online', 'busy' => 'Occupato', 'away' => 'Assente', 'offline' => 'Offline'];
+        @endphp
         <span class="selli-avatar__status selli-avatar__status--{{ $status }}"></span>
+        <span class="selli-sr-only">{{ $statusLabels[$status] ?? $status }}</span>
     @endif
 </span>

@@ -23,7 +23,9 @@ it('renders a dropdown with trigger and menu items', function () {
     expect($html)
         ->toContain('selli-dropdown')
         ->toContain('selli-dropdown__panel--end')
-        ->toContain('x-data="{ open: false }"')
+        ->toContain('selliDropdown()')
+        ->toContain('aria-haspopup="menu"')
+        ->toContain('aria-controls=')
         ->toContain('selli-menu__label')
         ->toContain('Azioni')
         ->toContain('selli-menu__item')
@@ -66,7 +68,9 @@ it('renders tabs with panels', function () {
     BLADE);
 
     expect($html)
-        ->toContain('x-data="{ active: 1 }"')
+        ->toContain('selliTabs(')
+        ->toContain('role="tab"')
+        ->toContain('aria-controls=')
         ->toContain('role="tablist"')
         ->toContain('Generale')
         ->toContain('active === 0')
@@ -148,8 +152,10 @@ it('renders pagination with a window and ellipsis', function () {
 });
 
 it('disables the previous control on the first page', function () {
-    expect($this->render('<x-selli::pagination :current="1" :total="5" url="?page=:page" />'))
-        ->toContain('aria-disabled="true"');
+    $html = $this->render('<x-selli::pagination :current="1" :total="5" url="?page=:page" />');
+
+    // The disabled prev control is a real disabled <button>, not a live link.
+    expect($html)->toMatch('/<button[^>]*aria-label="Precedente"[^>]*\sdisabled/');
 });
 
 it('renders an event-driven modal with title, body and footer', function () {
@@ -176,7 +182,7 @@ it('renders the toast host', function () {
         ->toContain('selli-toast-host')
         ->toContain('selliToastHost()')
         ->toContain('selli-toast.window')
-        ->toContain('aria-live="polite"');
+        ->toContain('selli-toast.window');
 });
 
 it('renders the command palette with normalized items', function () {

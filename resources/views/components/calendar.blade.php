@@ -24,16 +24,24 @@
     <div class="selli-calendar__header">
         <span class="selli-calendar__title">{{ $months[$month] }} {{ $year }}</span>
         <div class="selli-calendar__nav">
-            <a class="selli-calendar__nav-btn" @if ($prevUrl) href="{{ $prevUrl }}" @endif aria-label="Mese precedente"><x-selli::icon name="chevron-left" :size="16" /></a>
-            <a class="selli-calendar__nav-btn" @if ($nextUrl) href="{{ $nextUrl }}" @endif aria-label="Mese successivo"><x-selli::icon name="chevron-right" :size="16" /></a>
+            @if ($prevUrl)
+                <a class="selli-calendar__nav-btn" href="{{ $prevUrl }}" aria-label="Mese precedente"><x-selli::icon name="chevron-left" :size="16" /></a>
+            @else
+                <button type="button" class="selli-calendar__nav-btn" aria-label="Mese precedente" disabled><x-selli::icon name="chevron-left" :size="16" /></button>
+            @endif
+            @if ($nextUrl)
+                <a class="selli-calendar__nav-btn" href="{{ $nextUrl }}" aria-label="Mese successivo"><x-selli::icon name="chevron-right" :size="16" /></a>
+            @else
+                <button type="button" class="selli-calendar__nav-btn" aria-label="Mese successivo" disabled><x-selli::icon name="chevron-right" :size="16" /></button>
+            @endif
         </div>
     </div>
-    <div class="selli-calendar__grid" role="grid">
+    <div class="selli-calendar__grid" role="grid" aria-label="{{ $months[$month] }} {{ $year }}">
         @foreach ($dow as $d)
-            <div class="selli-calendar__dow">{{ $d }}</div>
+            <div class="selli-calendar__dow" role="columnheader" aria-hidden="true">{{ $d }}</div>
         @endforeach
         @for ($i = 0; $i < $lead; $i++)
-            <span class="selli-calendar__day selli-calendar__day--muted"></span>
+            <span class="selli-calendar__day selli-calendar__day--muted" aria-hidden="true"></span>
         @endfor
         @for ($day = 1; $day <= $daysInMonth; $day++)
             @php
@@ -41,10 +49,12 @@
                 $isToday = $dateStr === $todayStr;
                 $isSelected = $selected === $dateStr;
                 $hasEvent = isset($eventsSet[$dateStr]);
+                $dayLabel = $day.' '.$months[$month].' '.$year.($isToday ? ', oggi' : '').($hasEvent ? ', evento' : '');
             @endphp
             <button
                 type="button"
                 data-date="{{ $dateStr }}"
+                aria-label="{{ $dayLabel }}"
                 @class([
                     'selli-calendar__day',
                     'selli-calendar__day--today' => $isToday,

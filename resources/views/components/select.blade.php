@@ -3,6 +3,7 @@
     'placeholder' => null,
     'invalid' => false,
     'selected' => null,
+    'describedby' => null,
 ])
 <div class="selli-select-wrap">
     <select
@@ -11,6 +12,7 @@
             'selli-select--invalid' => $invalid,
         ]) }}
         @if ($invalid) aria-invalid="true" @endif
+        @if ($describedby) aria-describedby="{{ $describedby }}" @endif
     >
         @if ($placeholder)<option value="" disabled @selected($selected === null || $selected === '')>{{ $placeholder }}</option>@endif
         @forelse ($options as $value => $label)
@@ -19,5 +21,5 @@
             {{ $slot }}
         @endforelse
     </select>
-    <span class="selli-select-wrap__chevron"><x-selli::icon name="chevron-down" :size="18" /></span>
+    <span class="selli-select-wrap__chevron" aria-hidden="true"><x-selli::icon name="chevron-down" :size="18" /></span>
 </div>

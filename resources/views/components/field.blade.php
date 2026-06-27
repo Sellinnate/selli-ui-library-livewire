@@ -15,7 +15,7 @@
     @if ($description)<p class="selli-field__desc">{{ $description }}</p>@endif
     {{ $slot }}
     @if ($error)
-        <p class="selli-field__error"><x-selli::icon name="alert-circle" :size="13" />{{ $error }}</p>
+        <p class="selli-field__error" role="alert"><x-selli::icon name="alert-circle" :size="13" />{{ $error }}</p>
     @elseif ($hint)
         <p class="selli-field__hint">{{ $hint }}</p>
     @endif

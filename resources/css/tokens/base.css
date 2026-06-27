@@ -83,3 +83,34 @@ img { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Visually-hidden (screen-reader only) utility */
+.selli-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Baseline visible focus ring for all interactive Selli components.
+   Never remove focus styling without a visible replacement. */
+.selli-btn:focus-visible,
+.selli-badge:focus-visible,
+.selli-tabs__tab:focus-visible,
+.selli-navlist__item:focus-visible,
+.selli-pagination__btn:focus-visible,
+.selli-calendar__day:focus-visible,
+.selli-calendar__nav-btn:focus-visible,
+.selli-menu__item:focus-visible,
+.selli-command__item:focus-visible,
+.selli-autocomplete__option:focus-visible,
+.selli-dropdown__trigger:focus-visible,
+.selli-theme-toggle:focus-visible,
+.selli-editor__btn:focus-visible,
+.selli-breadcrumbs__item:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

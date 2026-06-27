@@ -2,9 +2,10 @@
     'label' => '',
     'placement' => 'top',
 ])
-<span {{ $attributes->class(['selli-tooltip']) }}>
+@php $tipId = 'selli-tip-'.uniqid(); @endphp
+<span {{ $attributes->class(['selli-tooltip']) }} @if ($label !== '') aria-describedby="{{ $tipId }}" @endif>
     {{ $slot }}
     @if ($label !== '')
-        <span role="tooltip" class="selli-tooltip__bubble selli-tooltip__bubble--{{ $placement }}">{{ $label }}</span>
+        <span role="tooltip" id="{{ $tipId }}" class="selli-tooltip__bubble selli-tooltip__bubble--{{ $placement }}">{{ $label }}</span>
     @endif
 </span>

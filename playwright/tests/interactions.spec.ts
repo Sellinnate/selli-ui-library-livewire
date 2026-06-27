@@ -87,10 +87,12 @@ test('colour theme switcher changes --primary and persists', async ({ page }) =>
   expect(await page.evaluate(() => localStorage.getItem('selli-color'))).toBe('emerald');
 });
 
-test('autocomplete filters options', async ({ page }) => {
-  const input = page.getByTestId('autocomplete').getByRole('textbox');
+test('autocomplete filters options (combobox semantics)', async ({ page }) => {
+  const input = page.getByTestId('autocomplete').getByRole('combobox');
+  await expect(input).toHaveAttribute('aria-expanded', 'false');
   await input.click();
+  await expect(input).toHaveAttribute('aria-expanded', 'true');
   await input.fill('Mil');
-  await expect(page.getByText('Milano')).toBeVisible();
+  await expect(page.getByRole('option', { name: 'Milano' })).toBeVisible();
   await expect(page.getByText('Napoli')).toBeHidden();
 });

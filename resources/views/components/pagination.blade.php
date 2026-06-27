@@ -34,7 +34,7 @@
     @if ($url && $current > 1)
         <a href="{{ $href($prev) }}" class="selli-pagination__btn" aria-label="Precedente"><x-selli::icon name="chevron-left" :size="16" /></a>
     @else
-        <button type="button" class="selli-pagination__btn" aria-label="Precedente" @if ($current <= 1) aria-disabled="true" @endif @if ($url) onclick="window.location='{{ $href($prev) }}'" @endif>
+        <button type="button" class="selli-pagination__btn" aria-label="Precedente" @disabled($current <= 1) @if ($url && $current > 1) onclick="window.location='{{ $href($prev) }}'" @endif>
             <x-selli::icon name="chevron-left" :size="16" />
         </button>
     @endif
@@ -56,7 +56,7 @@
     @if ($url && $current < $total)
         <a href="{{ $href($next) }}" class="selli-pagination__btn" aria-label="Successiva"><x-selli::icon name="chevron-right" :size="16" /></a>
     @else
-        <button type="button" class="selli-pagination__btn" aria-label="Successiva" @if ($current >= $total) aria-disabled="true" @endif @if ($url) onclick="window.location='{{ $href($next) }}'" @endif>
+        <button type="button" class="selli-pagination__btn" aria-label="Successiva" @disabled($current >= $total) @if ($url && $current < $total) onclick="window.location='{{ $href($next) }}'" @endif>
             <x-selli::icon name="chevron-right" :size="16" />
         </button>
     @endif

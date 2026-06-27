@@ -48,7 +48,8 @@
         { "title": "Design tokens", "path": "/foundations/design-tokens", "icon": "sliders-horizontal" },
         { "title": "Colors", "path": "/foundations/colors", "icon": "palette" },
         { "title": "Typography", "path": "/foundations/typography", "icon": "type" },
-        { "title": "Icons", "path": "/foundations/icons", "icon": "image" }
+        { "title": "Icons", "path": "/foundations/icons", "icon": "image" },
+        { "title": "Accessibility", "path": "/foundations/accessibility", "icon": "shield-check" }
       ]
     },
     {

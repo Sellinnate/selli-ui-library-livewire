@@ -4,6 +4,7 @@
     'hover' => true,
     'striped' => false,
     'empty' => 'Nessun dato disponibile',
+    'caption' => null,
 ])
 @php
     // Normalize columns when in data mode.
@@ -29,11 +30,12 @@
         'selli-table--hover' => $hover,
         'selli-table--striped' => $striped,
     ]) }}>
+        @if ($caption)<caption class="selli-sr-only">{{ $caption }}</caption>@endif
         @if ($dataMode)
             <thead>
                 <tr>
                     @foreach ($cols as $col)
-                        <th @class(['selli-table__num' => $col['numeric']])>{{ $col['label'] }}</th>
+                        <th scope="col" @class(['selli-table__num' => $col['numeric']])>{{ $col['label'] }}</th>
                     @endforeach
                 </tr>
             </thead>

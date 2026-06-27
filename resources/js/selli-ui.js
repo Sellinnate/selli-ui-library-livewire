@@ -10,9 +10,93 @@
  */
 (function () {
   function register(Alpine) {
-    // ── Autocomplete ──────────────────────────────────────────────
+    // ── Dropdown / popover / context-menu (keyboard + focus) ──────
+    Alpine.data('selliDropdown', () => ({
+      open: false,
+      toggle() { this.open ? this.close() : this.show(); },
+      show() {
+        this.open = true;
+        this.$nextTick(() => {
+          const f = this.$refs.panel && this.$refs.panel.querySelector(
+            '[role="menuitem"],[role="menuitemradio"],a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])',
+          );
+          f && f.focus();
+        });
+      },
+      close(refocus = true) {
+        if (!this.open) return;
+        this.open = false;
+        if (refocus) {
+          this.$nextTick(() => {
+            const t = this.$refs.trigger;
+            const btn = t && (t.querySelector('button,a[href],[tabindex]') || t);
+            btn && btn.focus && btn.focus();
+          });
+        }
+      },
+      nav(dir) {
+        if (!this.open) { this.show(); return; }
+        const items = this.$refs.panel
+          ? [...this.$refs.panel.querySelectorAll('[role="menuitem"],[role="menuitemradio"]')]
+          : [];
+        if (!items.length) return;
+        const cur = items.indexOf(document.activeElement);
+        let next = cur === -1 ? (dir > 0 ? 0 : items.length - 1) : (cur + dir + items.length) % items.length;
+        items[next].focus();
+      },
+    }));
+
+    // ── Modal (focus trap + restore) ──────────────────────────────
+    Alpine.data('selliModal', (config = {}) => ({
+      open: false,
+      _opener: null,
+      onOpen() {
+        this._opener = document.activeElement;
+        this.$nextTick(() => {
+          const p = this.$refs.panel;
+          if (!p) return;
+          const f = p.querySelector('[autofocus],button:not([disabled]),a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+          (f || p).focus();
+        });
+      },
+      onClose() {
+        this.open = false;
+        const o = this._opener;
+        if (o && o.focus) this.$nextTick(() => o.focus());
+      },
+      trap(e) {
+        if (e.key !== 'Tab' || !this.$refs.panel) return;
+        const f = [...this.$refs.panel.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+          .filter((el) => el.offsetParent !== null);
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      },
+    }));
+
+    // ── Tabs (roving tabindex + arrow keys) ───────────────────────
+    Alpine.data('selliTabs', (config = {}) => ({
+      active: config.default || 0,
+      count: config.count || 0,
+      move(dir) {
+        this.active = (this.active + dir + this.count) % this.count;
+        this.focusActive();
+      },
+      first() { this.active = 0; this.focusActive(); },
+      last() { this.active = this.count - 1; this.focusActive(); },
+      focusActive() {
+        this.$nextTick(() => {
+          const t = this.$root.querySelector('[role="tab"][data-index="' + this.active + '"]');
+          t && t.focus();
+        });
+      },
+    }));
+
+    // ── Autocomplete (combobox + aria-activedescendant) ───────────
     Alpine.data('selliAutocomplete', (config = {}) => ({
       options: config.options || [],
+      idBase: config.id || 'selli-ac',
       query: '',
       selected: config.value || '',
       open: false,
@@ -26,6 +110,8 @@
         if (!q) return this.options;
         return this.options.filter((o) => o.label.toLowerCase().includes(q));
       },
+      optId(i) { return this.idBase + '-opt-' + i; },
+      get activeId() { return this.open && this.filtered.length ? this.optId(this.active) : null; },
       move(dir) {
         if (!this.open) { this.open = true; return; }
         const n = this.filtered.length;
@@ -105,19 +191,28 @@
       destroy() {
         window.removeEventListener('keydown', this._onKey);
       },
+      _opener: null,
       get filtered() {
         const q = this.query.toLowerCase().trim();
         if (!q) return this.items;
         return this.items.filter((it) => it.label.toLowerCase().includes(q));
       },
+      optId(i) { return 'selli-cmd-opt-' + i; },
+      get activeId() { return this.open && this.filtered.length ? this.optId(this.active) : null; },
       toggle() { this.open ? this.close() : this.show(); },
       show() {
+        this._opener = document.activeElement;
         this.open = true;
         this.query = '';
         this.active = 0;
         this.$nextTick(() => this.$refs.input && this.$refs.input.focus());
       },
-      close() { this.open = false; },
+      close() {
+        if (!this.open) return;
+        this.open = false;
+        const o = this._opener;
+        if (o && o.focus) this.$nextTick(() => o.focus());
+      },
       move(dir) {
         const n = this.filtered.length;
         if (!n) return;

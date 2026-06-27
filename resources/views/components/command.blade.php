@@ -2,9 +2,10 @@
     'items' => [],
     'placeholder' => 'Cerca comandi…',
     'empty' => 'Nessun risultato',
+    'label' => 'Cerca un comando',
 ])
 @php
-    // Normalize: ['label' => , 'shortcut' => , 'url' => , 'group' => ]
+    $listId = 'selli-cmd-list-'.uniqid();
     $normalized = [];
     foreach ($items as $item) {
         if (is_array($item)) {
@@ -26,23 +27,40 @@
                 class="selli-command"
                 role="dialog"
                 aria-modal="true"
+                aria-label="{{ $label }}"
                 @keydown.arrow-down.prevent="move(1)"
                 @keydown.arrow-up.prevent="move(-1)"
                 @keydown.enter.prevent="run()"
             >
                 <div class="selli-command__search">
-                    <x-selli::icon name="search" :size="18" color="var(--muted-foreground)" />
-                    <input class="selli-command__input" type="text" x-model="query" x-ref="input" placeholder="{{ $placeholder }}" autocomplete="off">
+                    <span aria-hidden="true"><x-selli::icon name="search" :size="18" color="var(--muted-foreground)" /></span>
+                    <input
+                        class="selli-command__input"
+                        type="text"
+                        aria-label="{{ $label }}"
+                        role="combobox"
+                        aria-controls="{{ $listId }}"
+                        aria-autocomplete="list"
+                        :aria-expanded="open ? 'true' : 'false'"
+                        :aria-activedescendant="activeId"
+                        x-model="query"
+                        x-ref="input"
+                        placeholder="{{ $placeholder }}"
+                        autocomplete="off"
+                    >
                     <x-selli::kbd>ESC</x-selli::kbd>
                 </div>
-                <div class="selli-command__list">
+                <div class="selli-command__list" id="{{ $listId }}" role="listbox" aria-label="{{ $label }}">
                     <template x-for="(it, i) in filtered" :key="i">
                         <a
                             class="selli-command__item"
+                            role="option"
+                            :id="optId(i)"
+                            :aria-selected="i === active ? 'true' : 'false'"
                             :class="{ 'selli-command__item--active': i === active }"
-                            @click="run(i)"
+                            @click.prevent="run(i)"
                             @mouseenter="active = i"
-                            :href="it.url || '#'"
+                            :href="it.url || null"
                         >
                             <span x-text="it.label"></span>
                             <template x-if="it.shortcut">
@@ -51,7 +69,7 @@
                         </a>
                     </template>
                     <template x-if="!filtered.length">
-                        <div class="selli-command__empty">{{ $empty }}</div>
+                        <div class="selli-command__empty" role="status">{{ $empty }}</div>
                     </template>
                 </div>
             </div>

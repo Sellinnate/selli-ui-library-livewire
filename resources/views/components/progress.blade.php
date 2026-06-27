@@ -18,6 +18,7 @@
     <div
         class="selli-progress__track"
         role="progressbar"
+        @if ($label) aria-label="{{ $label }}" @endif
         @unless ($indeterminate)
             aria-valuenow="{{ round($pct) }}" aria-valuemin="0" aria-valuemax="100"
         @endunless

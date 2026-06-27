@@ -5,10 +5,11 @@
     'size' => 'md',
     'invalid' => false,
     'clearable' => false,
+    'describedby' => null,
 ])
 <div class="selli-input-wrap">
     @if ($icon)
-        <span class="selli-input-wrap__icon"><x-selli::icon :name="$icon" :size="18" /></span>
+        <span class="selli-input-wrap__icon" aria-hidden="true"><x-selli::icon :name="$icon" :size="18" /></span>
     @endif
     <input
         type="{{ $type }}"
@@ -20,6 +21,7 @@
             'selli-input--invalid' => $invalid,
         ]) }}
         @if ($invalid) aria-invalid="true" @endif
+        @if ($describedby) aria-describedby="{{ $describedby }}" @endif
     >
     @if ($clearable)
         <button

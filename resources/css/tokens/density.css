@@ -1,0 +1,25 @@
+/* ============================================================
+   Selli — Density tokens
+   Drives the height / horizontal padding of form controls and
+   buttons. The runtime theme store sets data-density on <html>;
+   defaults to "comfortable".
+   ============================================================ */
+
+:root,
+[data-density="comfortable"] {
+  --ds-control-h: 2.75rem;   /* 44px */
+  --ds-control-px: 1rem;
+  --ds-gap: 1rem;
+}
+
+[data-density="cozy"] {
+  --ds-control-h: 2.5rem;    /* 40px */
+  --ds-control-px: 0.875rem;
+  --ds-gap: 0.75rem;
+}
+
+[data-density="compact"] {
+  --ds-control-h: 2.25rem;   /* 36px */
+  --ds-control-px: 0.75rem;
+  --ds-gap: 0.5rem;
+}

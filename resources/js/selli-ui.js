@@ -55,7 +55,87 @@
         this.$refs.hidden.dispatchEvent(new Event('input', { bubbles: true }));
       },
     }));
+
+    // ── Toast host ────────────────────────────────────────────────
+    const TOAST_ICONS = {
+      info: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>',
+      success: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>',
+      warning: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+      danger: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>',
+    };
+    Alpine.data('selliToastHost', () => ({
+      toasts: [],
+      seq: 0,
+      push(detail = {}) {
+        const id = ++this.seq;
+        const t = {
+          id,
+          title: detail.title || '',
+          message: detail.message || '',
+          variant: detail.variant || 'info',
+          timeout: detail.timeout == null ? 4000 : detail.timeout,
+        };
+        this.toasts.push(t);
+        if (t.timeout) setTimeout(() => this.dismiss(id), t.timeout);
+      },
+      dismiss(id) {
+        this.toasts = this.toasts.filter((t) => t.id !== id);
+      },
+      icon(variant) {
+        return TOAST_ICONS[variant] || TOAST_ICONS.info;
+      },
+    }));
+
+    // ── Command palette (⌘K) ──────────────────────────────────────
+    Alpine.data('selliCommand', (config = {}) => ({
+      items: config.items || [],
+      open: false,
+      query: '',
+      active: 0,
+      init() {
+        this._onKey = (e) => {
+          if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            this.toggle();
+          }
+        };
+        window.addEventListener('keydown', this._onKey);
+        window.addEventListener('selli-open-command', () => this.show());
+      },
+      destroy() {
+        window.removeEventListener('keydown', this._onKey);
+      },
+      get filtered() {
+        const q = this.query.toLowerCase().trim();
+        if (!q) return this.items;
+        return this.items.filter((it) => it.label.toLowerCase().includes(q));
+      },
+      toggle() { this.open ? this.close() : this.show(); },
+      show() {
+        this.open = true;
+        this.query = '';
+        this.active = 0;
+        this.$nextTick(() => this.$refs.input && this.$refs.input.focus());
+      },
+      close() { this.open = false; },
+      move(dir) {
+        const n = this.filtered.length;
+        if (!n) return;
+        this.active = (this.active + dir + n) % n;
+      },
+      run(i) {
+        const it = this.filtered[i == null ? this.active : i];
+        if (!it) return;
+        this.close();
+        if (it.url) window.location = it.url;
+      },
+    }));
   }
+
+  // Global imperative toast helper.
+  window.selliToast = function (detail) {
+    window.dispatchEvent(new CustomEvent('selli-toast', { detail: detail || {} }));
+  };
 
   if (window.Alpine) {
     register(window.Alpine);

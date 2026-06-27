@@ -559,3 +559,73 @@ details[open] > .selli-accordion__summary .selli-accordion__chevron { transform:
 /* ───────────────────────── DatePicker ───────────────────────── */
 .selli-datepicker { position: relative; width: 100%; }
 .selli-datepicker__pop { position: absolute; z-index: 50; top: calc(100% + 6px); left: 0; animation: selli-pop var(--dur) var(--ease-out); }
+
+/* ───────────────────────── App shell (layout) ───────────────────────── */
+.selli-app { display: flex; min-height: 100vh; font-family: var(--font-sans); background: var(--background); color: var(--foreground); }
+.selli-app__sidebar { width: 260px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; padding: 16px 14px; border-right: 1px solid var(--border); background: color-mix(in oklab, var(--card) 60%, var(--background)); position: sticky; top: 0; height: 100vh; z-index: 60; }
+.selli-app__brand { padding: 4px 8px 12px; }
+.selli-app__nav { flex: 1; overflow-y: auto; margin: 0 -6px; padding: 0 6px; }
+.selli-app__user { padding-top: 10px; border-top: 1px solid var(--border); }
+.selli-app__main { flex: 1; min-width: 0; display: flex; flex-direction: column; min-height: 100vh; }
+.selli-app__topbar { height: 64px; flex-shrink: 0; display: flex; align-items: center; gap: 14px; padding: 0 22px; border-bottom: 1px solid var(--border); background: color-mix(in oklab, var(--background) 82%, transparent); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 30; }
+.selli-app__title { margin: 0; font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; color: var(--foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
+.selli-app__content { flex: 1; }
+.selli-app__content-inner { max-width: 1200px; margin: 0 auto; padding: 28px 28px 100px; }
+.selli-app__search { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 10px 0 12px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface-card); color: var(--muted-foreground); cursor: pointer; font-family: var(--font-sans); font-size: var(--text-sm); min-width: 180px; }
+.selli-app__search span { flex: 1; text-align: left; }
+.selli-app__search:hover { border-color: var(--border-strong); }
+.selli-app__iconbtn { position: relative; width: 38px; height: 38px; display: grid; place-items: center; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface-card); color: var(--muted-foreground); cursor: pointer; transition: all var(--dur) var(--ease-out); flex-shrink: 0; }
+.selli-app__iconbtn:hover { color: var(--foreground); border-color: var(--border-strong); }
+.selli-app__iconbtn-dot { position: absolute; top: 7px; right: 8px; width: 7px; height: 7px; border-radius: 99px; background: var(--danger); border: 1.5px solid var(--card); }
+.selli-app__hamburger { display: none; }
+.selli-app__backdrop { display: none; }
+@media (max-width: 768px) {
+  .selli-app__sidebar { position: fixed; left: 0; top: 0; transform: translateX(-100%); transition: transform 0.28s var(--ease-out); box-shadow: var(--shadow-2xl); }
+  .selli-app[data-open="true"] .selli-app__sidebar { transform: translateX(0); }
+  .selli-app[data-open="true"] .selli-app__backdrop { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 55; }
+  .selli-app__hamburger { display: grid; place-items: center; }
+  .selli-app__content-inner { padding: 20px 16px 90px; }
+  .selli-app__search span, .selli-app__search kbd { display: none; }
+  .selli-app__search { min-width: 0; }
+}
+
+/* ───────────────────────── Panel ───────────────────────── */
+.selli-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-2xl); display: flex; flex-direction: column; min-width: 0; font-family: var(--font-sans); }
+.selli-panel__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.selli-panel__title { font-size: var(--text-base); font-weight: 600; color: var(--foreground); }
+.selli-panel__sub { font-size: var(--text-xs); color: var(--muted-foreground); margin-top: 2px; }
+.selli-panel__body { padding: 20px; flex: 1; min-width: 0; }
+
+/* ───────────────────────── Stat card ───────────────────────── */
+.selli-stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-2xl); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; font-family: var(--font-sans); }
+.selli-stat-card__top { display: flex; align-items: center; justify-content: space-between; }
+.selli-stat-card__icon { width: 38px; height: 38px; border-radius: var(--radius-lg); background: color-mix(in oklab, var(--primary) 14%, var(--card)); display: grid; place-items: center; color: var(--primary); }
+.selli-stat-card__delta { display: inline-flex; align-items: center; gap: 3px; font-size: var(--text-xs); font-weight: 600; }
+.selli-stat-card__delta--up { color: var(--success); }
+.selli-stat-card__delta--down { color: var(--danger); }
+.selli-stat-card__value { font-size: var(--text-3xl); font-weight: 700; letter-spacing: -0.02em; color: var(--foreground); line-height: 1.1; }
+.selli-stat-card__label { font-size: var(--text-sm); color: var(--muted-foreground); margin-top: 3px; }
+
+/* ───────────────────────── Page head ───────────────────────── */
+.selli-page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; font-family: var(--font-sans); }
+.selli-page-head__title { margin: 0; font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em; color: var(--foreground); }
+.selli-page-head__sub { margin: 6px 0 0; font-size: var(--text-sm); color: var(--muted-foreground); }
+.selli-page-head__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ───────────────────────── Empty state ───────────────────────── */
+.selli-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 64px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-2xl); font-family: var(--font-sans); }
+.selli-empty__icon { width: 60px; height: 60px; border-radius: var(--radius-2xl); background: var(--surface-raised); display: grid; place-items: center; color: var(--muted-foreground); }
+.selli-empty__title { font-size: var(--text-lg); font-weight: 600; color: var(--foreground); }
+.selli-empty__desc { font-size: var(--text-sm); color: var(--muted-foreground); max-width: 380px; line-height: 1.55; }
+
+/* ───────────────────────── Layout helpers ───────────────────────── */
+.selli-grid { display: grid; gap: 20px; }
+.selli-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.selli-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.selli-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) { .selli-grid--3, .selli-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .selli-grid--2, .selli-grid--3, .selli-grid--4 { grid-template-columns: 1fr; } }
+
+/* ───────────────────────── Theme toggle ───────────────────────── */
+.selli-theme-toggle { width: 38px; height: 38px; display: grid; place-items: center; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface-card); color: var(--muted-foreground); cursor: pointer; transition: all var(--dur) var(--ease-out); flex-shrink: 0; }
+.selli-theme-toggle:hover { color: var(--foreground); border-color: var(--border-strong); }
